@@ -26,10 +26,19 @@ extension MeasurementFormatter {
     }()
 }
 
+extension NumberFormatter {
+    static func precision(_ fraction: Int) -> NumberFormatter {
+        let nf = NumberFormatter()
+        nf.maximumFractionDigits = 2
+        return nf
+    }
+}
+
 extension Formatter {
     static var mileageFormatter: MeasurementFormatter = .forMileage
     static var longDateFormatter: DateIntervalFormatter = .longDate
     static var shortDateFormatter: DateIntervalFormatter = .shortDate
+    static var twoFractionalDigits: NumberFormatter = .precision(2)
 }
 
 extension Double {
@@ -38,17 +47,13 @@ extension Double {
     }
     
     var adaptivePrecisionString: String {
-        if self.truncate(places: 0) == self {
-            return String(format: "%.0f", self)
-        } else if self.truncate(places: 1) == self {
-            return String(format: "%.1f", self)
-        }
-        return String(format: "%.2f", self)
+        let num = NSNumber(value: self)
+        return NumberFormatter.precision(2).string(from: num) ?? "--"
     }
 }
 
 extension Double {
     func truncate(places : Int)-> Double {
-        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
+        return Double(floor(pow(10.0, Double(places)).rounded() * self)/pow(10.0, Double(places)))
     }
 }

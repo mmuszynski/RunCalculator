@@ -8,48 +8,49 @@
 import SwiftUI
 
 struct RunningPlanView: View {
-    @State var plan: RunningPlan
-    @State var selection: RunningPlanDailyGoal?
+    @EnvironmentObject var controller: RunningPlanViewController
     
     var body: some View {
-        ScrollView {
-            Grid(horizontalSpacing: 0) {
-                GridRow {
-                    Text("Wk")
-                    RunningPlanHeaderView()
-                }
-                
-                Divider()
-                    .gridCellUnsizedAxes(.horizontal)
-                
-                ForEach(plan.weeklyGoals.indices, id: \.self) { index in
-                    GridRow {
-                        RunningPlanWeekView(week: plan.weeklyGoals[index],
-                                            weekIndex: index,
-                                            selection: $selection)
+        VStack {
+            ScrollView {
+                Grid(horizontalSpacing: 0) {
+                    RunningPlanHeaderGridRow()
                         .frame(width: 40)
+                    
+                    Divider()
+                        .gridCellUnsizedAxes(.horizontal)
+                    
+                    ForEach(controller.plan.goals) { week in
+                        RunningPlanWeekGridRow(week: week)
+                    }
+                    
+                    GridRow {
+                        Button("Add a week") {
+                            withAnimation {
+                                controller.plan.addWeek()
+                            }
+                        }
+                        .gridCellColumns(10)
                     }
                 }
-                
-                GridRow {
-                    Button("Add a week") { plan.add(.empty) }
-                        .gridCellColumns(10)
-                }
+                .font(.title2)
             }
-            .font(.title2)
+            .onTapGesture {
+                controller.selection = nil
+            }
+            
+            RunningPlanKeyboard()
+                .frame(height: 300)
+                .padding()
         }
-        .onTapGesture {
-            selection = nil
-        }
+        
+        
     }
 }
 
 struct RunningPlanView_Previews: PreviewProvider {
     static var previews: some View {
-        RunningPlanView(plan: {
-            var plan = RunningPlan()
-            plan.add(.empty)
-            return plan
-        }())
+        RunningPlanView()
+            .environmentObject(RunningPlanViewController())
     }
 }

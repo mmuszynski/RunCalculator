@@ -2,38 +2,31 @@
 //  RunningPlanWeeklyGoal.swift
 //  RunCalculator
 //
-//  Created by Mike Muszynski on 5/25/23.
+//  Created by Mike Muszynski on 5/27/23.
 //
 
 import Foundation
 
 struct RunningPlanWeeklyGoal: Codable {
-    var days: [RunningPlanDailyGoal]
+    var goals: [RunningPlanDailyGoal] = []
+    var week: Int
     
-    var totalMileage: Double {
-        days.reduce(0) { partialResult, next in
-            return partialResult + next.miles
-        }
-    }
-    
-    var weekIndex: Int {
-        set {
-            days = days.map {
-                var day = $0
-                day.week = newValue
-                return day
-            }
-        }
-        get {
-            return days.first?.week ?? 0
-        }
-    }
-    
-    static var empty: RunningPlanWeeklyGoal {
-        var week = RunningPlanWeeklyGoal(days: [])
+    init(index weekIndex: Int = 0, dailyMiles: Double = 0) {
+        self.week = weekIndex
         for day in 0..<7 {
-            week.days.append(RunningPlanDailyGoal(miles: 0, day: day, week: 0))
+            goals.append(.init(miles: dailyMiles, day: day, week: weekIndex))
         }
-        return week
+    }
+    
+    var totalMiles: Double {
+        goals.reduce(0) { partialResult, next in
+            partialResult + next.miles
+        }
+    }
+}
+
+extension RunningPlanWeeklyGoal: Identifiable {
+    var id: Int {
+        week
     }
 }

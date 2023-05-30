@@ -8,13 +8,10 @@
 import Foundation
 
 struct RunningPlan: Codable {
-    var weeklyGoals: [RunningPlanWeeklyGoal] = [.empty]
+    var goals: [RunningPlanWeeklyGoal] = []
     
-    mutating func add(_ week: RunningPlanWeeklyGoal) {
-        let weekIndex = weeklyGoals.count
-        var week = week
-        week.weekIndex = weekIndex
-        self.weeklyGoals.append(week)
+    mutating func addWeek() {
+        goals.append(RunningPlanWeeklyGoal(index: goals.count))
     }
     
     private static var dayFormatter: DateFormatter {
@@ -23,8 +20,19 @@ struct RunningPlan: Codable {
         return df
     }
     
+    private static var longDayFormatter: DateFormatter {
+        let df = DateFormatter()
+        df.dateFormat = "eeee"
+        return df
+    }
+    
     static func dayDescription(dayIndex day: Int) -> String? {
-        guard let date = Calendar.current.date(from: DateComponents(year: 2000, weekday: day + 1, weekOfYear: 1)) else { return nil }
+        guard let date = Calendar.current.date(from: DateComponents(weekday: day + 1, weekOfYear: 1)) else { return nil }
         return Self.dayFormatter.string(from: date)
+    }
+    
+    static func longDayDescription(dayIndex day: Int) -> String? {
+        guard let date = Calendar.current.date(from: DateComponents(weekday: day + 1, weekOfYear: 1)) else { return nil }
+        return Self.longDayFormatter.string(from: date)
     }
 }

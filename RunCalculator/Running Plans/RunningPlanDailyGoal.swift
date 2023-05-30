@@ -16,3 +16,9 @@ struct RunningPlanDailyGoal: Codable, Hashable {
         return Measurement(value: miles, unit: .miles)
     }
 }
+
+extension RunningPlanDailyGoal: Identifiable {
+    var id: String {
+        String(describing: day) + String(describing: week)
+    }
+}

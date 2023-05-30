@@ -16,6 +16,7 @@ extension Color {
 @main
 struct RunCalculatorApp: App {
     let controller = HealthDataController()
+    let planController = RunningPlanViewController()
     
     var body: some Scene {
         WindowGroup {
@@ -32,7 +33,8 @@ struct RunCalculatorApp: App {
                     .tabItem { Text("Chart") }
                 WeeklyView()
                     .tabItem { Text("Weeks") }
-                RunningPlanView(plan: RunningPlan())
+                RunningPlanView()
+                    .environmentObject(planController)
                     .tabItem { Text("Plan") }
             }
             .environmentObject(controller)

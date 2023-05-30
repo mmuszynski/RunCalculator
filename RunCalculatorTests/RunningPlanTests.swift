@@ -26,6 +26,28 @@ final class RunningPlanTests: XCTestCase {
         XCTAssertEqual(twoSig.adaptivePrecisionString, "4.25")
         XCTAssertEqual(multisig.adaptivePrecisionString, "4.39")
         
+        var additionErrors = 0.0
+        additionErrors += 0.1
+        XCTAssertEqual(additionErrors.adaptivePrecisionString, "0.1")
+        additionErrors += 0.1
+        XCTAssertEqual(additionErrors.adaptivePrecisionString, "0.2")
+        additionErrors += 0.1
+        XCTAssertEqual(additionErrors.adaptivePrecisionString, "0.3")
+        additionErrors += 0.1
+        XCTAssertEqual(additionErrors.adaptivePrecisionString, "0.4")
+        additionErrors += 0.1
+        XCTAssertEqual(additionErrors.adaptivePrecisionString, "0.5")
+        additionErrors += 0.1
+        XCTAssertEqual(additionErrors.adaptivePrecisionString, "0.6")
+        additionErrors += 0.1
+        XCTAssertEqual(additionErrors.adaptivePrecisionString, "0.7")
+        additionErrors += 0.1
+        XCTAssertEqual(additionErrors.adaptivePrecisionString, "0.8")
+        additionErrors += 0.1
+        XCTAssertEqual(additionErrors.adaptivePrecisionString, "0.9")
+        additionErrors += 0.1
+        XCTAssertEqual(additionErrors.adaptivePrecisionString, "1")
+        
     }
 
 }
