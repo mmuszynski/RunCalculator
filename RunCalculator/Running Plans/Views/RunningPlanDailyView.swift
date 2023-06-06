@@ -22,13 +22,15 @@ struct RunningPlanDailyView: View {
     }
     
     var body: some View {
-        Text(goal.miles.adaptivePrecisionString)
-            .foregroundColor(foreground)
-            .frame(minWidth: 40, minHeight: 40)
-            .background {
-                (isSelected ? Color.blue : Color.clear)
-                    .clipShape(Circle())
-            }
+        ZStack {
+            Rectangle()
+                .foregroundStyle(isSelected ? .blue : .clear)
+                .clipShape(Circle())
+            Text(goal.miles.adaptivePrecisionString)
+                .foregroundColor(foreground)
+                .fontWeight(goal.miles == 0 ? .ultraLight : nil)
+                .fontWeight(isSelected ? .bold : nil)
+        }
     }
 }
 

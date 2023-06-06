@@ -9,7 +9,13 @@ import Foundation
 
 struct RunningPlanWeeklyGoal: Codable {
     var goals: [RunningPlanDailyGoal] = []
-    var week: Int
+    var week: Int {
+        didSet {
+            self.goals = self.goals.map { goal in
+                RunningPlanDailyGoal(miles: goal.miles, day: goal.day, week: self.week)
+            }
+        }
+    }
     
     init(index weekIndex: Int = 0, dailyMiles: Double = 0) {
         self.week = weekIndex
@@ -22,6 +28,17 @@ struct RunningPlanWeeklyGoal: Codable {
         goals.reduce(0) { partialResult, next in
             partialResult + next.miles
         }
+    }
+}
+
+extension RunningPlanWeeklyGoal: ExpressibleByArrayLiteral {
+    init(arrayLiteral elements: Double...) {
+        self.week = 0
+        var newGoals = elements.enumerated().map { (day, miles) in RunningPlanDailyGoal(miles: miles, day: day, week: self.week)}
+        while newGoals.count < 7 {
+            newGoals.append(RunningPlanDailyGoal(miles: 0, day: newGoals.count, week: self.week))
+        }
+        self.goals = newGoals
     }
 }
 

@@ -11,10 +11,12 @@ struct RunningPlanHeaderGridRow: View {
     var body: some View {
         GridRow {
             Text("Wk")
+                .fontWeight(.ultraLight)
             ForEach(0..<7) { idx in
                 Text(RunningPlan.dayDescription(dayIndex: idx) ?? "xx")
             }
             Text("Tot")
+                .fontWeight(.ultraLight)
         }
     }
 }

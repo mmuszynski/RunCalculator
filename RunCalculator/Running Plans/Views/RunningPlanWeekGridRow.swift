@@ -13,15 +13,26 @@ struct RunningPlanWeekGridRow: View {
     
     var body: some View {
         GridRow {
-            Text("\(week.week + 1)")
+            ZStack {
+                Color.clear
+                Text("\(week.week)")
+                    .fontWeight(.ultraLight)
+                    .italic()
+            }
+            
             ForEach(week.goals) { day in
-                RunningPlanDailyView(goal: day, isSelected: controller.selection == day)
+                RunningPlanDailyView(goal: day, isSelected: controller.selection?.id == day.id)
                     .onTapGesture {
                         controller.selection = day
                     }
             }
-            Text(NSNumber(value: week.totalMiles),
-                 formatter: .twoFractionalDigits)
+            
+            ZStack {
+                Color.clear
+                Text(NSNumber(value: week.totalMiles),
+                     formatter: .twoFractionalDigits)
+                .bold()
+            }
         }
         .transition(.scale)
     }
