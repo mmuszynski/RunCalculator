@@ -13,13 +13,8 @@ struct RunningPlanWeekGridRow: View {
     
     var body: some View {
         GridRow {
-            ZStack {
-                Color.clear
-                Text("\(week.week)")
-                    .fontWeight(.ultraLight)
-                    .italic()
-            }
-            
+            Color.clear
+                .frame(width: 10)
             ForEach(week.goals) { day in
                 RunningPlanDailyView(goal: day, isSelected: controller.selection?.id == day.id)
                     .onTapGesture {

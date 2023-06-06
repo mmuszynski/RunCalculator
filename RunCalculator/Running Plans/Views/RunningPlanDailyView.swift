@@ -24,21 +24,30 @@ struct RunningPlanDailyView: View {
     var body: some View {
         ZStack {
             Rectangle()
+                .aspectRatio(1, contentMode: .fit)
                 .foregroundStyle(isSelected ? .blue : .clear)
                 .clipShape(Circle())
-            Text(goal.miles.adaptivePrecisionString)
-                .foregroundColor(foreground)
-                .fontWeight(goal.miles == 0 ? .ultraLight : nil)
-                .fontWeight(isSelected ? .bold : nil)
+                .scaleEffect(0.8)
+                .overlay {
+                    Text(goal.miles.adaptivePrecisionString)
+                        .foregroundColor(foreground)
+                        .fontWeight(goal.miles == 0 ? .ultraLight : nil)
+                        .fontWeight(isSelected ? .bold : nil)
+                        .frame(maxWidth: .infinity)
+                        .frame(maxHeight: .infinity)
+                }
         }
     }
 }
 
 struct RunningPlanDailyView_Previews: PreviewProvider {
     static var previews: some View {
-        HStack {
+        HStack(spacing: 0) {
             RunningPlanDailyView(goal: .init(miles: 0, day: 1, week: 0))
+                .frame(width: 30)
             RunningPlanDailyView(goal: .init(miles: 0, day: 1, week: 0), isSelected: true)
+                .frame(width: 30)
         }
+        .previewLayout(.sizeThatFits)
     }
 }

@@ -21,15 +21,26 @@ struct RunningPlanView: View {
                 
                 VStack {
                     ScrollView {
-                        Grid(horizontalSpacing: 0, verticalSpacing: 0) {
+                        Grid(horizontalSpacing: 0,
+                             verticalSpacing: 0) {
                             RunningPlanHeaderGridRow()
                             
-                            Divider()
-                            
                             ForEach(controller.plan.goals) { week in
+                                
+                                HStack {
+                                    Text("wk \(week.week + 1)")
+                                        .font(.caption)
+                                        .fontWeight(.ultraLight)
+                                        .frame(height: 0)
+                                    VStack {
+                                        Divider()
+                                    }
+                                }
+                                
                                 RunningPlanWeekGridRow(week: week)
-                                    .frame(minHeight: 44)
                             }
+                            
+                            Divider()
                             
                             GridRow {
                                 Button("Add a week") {
