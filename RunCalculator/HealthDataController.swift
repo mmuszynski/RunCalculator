@@ -7,6 +7,9 @@
 
 import Foundation
 import HealthKit
+import OSLog
+
+fileprivate let logger = Logger(category: "HealthKitController")
 
 class HealthDataController: ObservableObject {
     var store: HKHealthStore?
@@ -26,27 +29,33 @@ class HealthDataController: ObservableObject {
             if let status = try await store?.statusForAuthorizationRequest(toShare: [], read: [.workoutType()]) {
                 switch status {
                 case .unknown:
-                    print("Authorization unknown")
+                    logger.info("Reported Authorization unknown")
                 case .shouldRequest:
+                    logger.info("Requesting workout authorization")
                     try await store?.requestAuthorization(toShare: [], read: [.workoutType()])
                     getWorkouts(startDate: startDate, endDate: endDate, completion)
                     return
                 case .unnecessary:
-                    print("Authorization Unnecessary")
+                    logger.info("Reported Authorization Unnecessary")
                 @unknown default:
                     fatalError()
                 }
             }
+            
+            let type = HKSampleType.workoutType()
+            let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+            
+            let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: Int(HKObjectQueryNoLimit), sortDescriptors: nil) { query, samples, error in
+                
+                logger.info("Returning HKSampleQuery with \(samples?.count ?? 0) samples")
+                
+                completion?(samples as? [HKWorkout])
+            }
+            
+            logger.info("Executing HKSampleQuery")
+            
+            store?.execute(query)
         }
-        
-        let type = HKSampleType.workoutType()
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
-        
-        let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: Int(HKObjectQueryNoLimit), sortDescriptors: nil) { query, samples, error in
-            completion?(samples as? [HKWorkout])
-        }
-        
-        store?.execute(query)
     }
     
     func getWorkouts(startDate: Date, endDate: Date) async -> [HKWorkout] {
@@ -59,6 +68,8 @@ class HealthDataController: ObservableObject {
     }
     
     @MainActor func loadWorkouts(startDate: Date = .distantPast, endDate: Date = .distantFuture) async {
+        logger.debug("Loading workouts")
+        
         let workouts = await getWorkouts(startDate: startDate, endDate: endDate)
         self.workouts = workouts
         self.computeSummaries()
@@ -66,6 +77,8 @@ class HealthDataController: ObservableObject {
     }
     
     func summary(for interval: DateInterval, activity: HKWorkoutActivityType = .running) -> WorkoutPeriodSummary {
+        logger.info("Calculating workout period summary for \(interval)")
+        
         var summary = WorkoutPeriodSummary()
         summary.interval = interval
         summary.workouts = self.workouts.filter({ workout in

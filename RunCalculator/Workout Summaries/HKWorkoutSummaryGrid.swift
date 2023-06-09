@@ -8,24 +8,21 @@
 import SwiftUI
 
 struct HKWorkoutSummaryGrid: View {
-    @EnvironmentObject var hdc: HealthDataController
-    @State var pickerPeriod: HealthDataController.SummaryPeriod = .year
+    @EnvironmentObject var controller: HealthDataController
     
     var body: some View {
-        if hdc.summaries.isEmpty {
+        if controller.summaries.isEmpty {
             Text("Empty.")
                 .font(.largeTitle)
                 .foregroundColor(.gray)
         } else {
-            Picker("Period", selection: $pickerPeriod) {
-                ScrollView(.horizontal) {
-                    LazyHStack {
-                        ForEach(hdc.summaries, id: \.self) { summary in
-                            Button(action: {
-                                hdc.drillDown(for: summary)
-                            }) {
-                                HKWorkoutSummaryCard(summary)
-                            }
+            ScrollView(.horizontal) {
+                LazyHStack {
+                    ForEach(controller.summaries, id: \.self) { summary in
+                        Button(action: {
+                            controller.drillDown(for: summary)
+                        }) {
+                            HKWorkoutSummaryCard(summary)
                         }
                     }
                 }
