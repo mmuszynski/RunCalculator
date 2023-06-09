@@ -152,7 +152,7 @@ class HealthDataController: ObservableObject {
             //get year
             let year = summary.interval.start.year
             self.summaryPeriod = .weeks(year: year)
-        case .weeks(let year):
+        case .weeks(_):
             break
         }
     }

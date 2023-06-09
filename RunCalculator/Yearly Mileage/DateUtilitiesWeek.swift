@@ -56,7 +56,7 @@ extension Date {
     }
     
     static func weekIntervals(for date: Date) -> [DateInterval] {
-        var yearInterval = date.yearInterval!
+        let yearInterval = date.yearInterval!
         return date.weekStarts.compactMap { day in
             Calendar.current.dateInterval(of: .weekOfYear, for: day)?.intersection(with: yearInterval)
         }
