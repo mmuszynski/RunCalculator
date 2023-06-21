@@ -37,6 +37,7 @@ struct RunningPlanDailyView: View {
                         .frame(maxHeight: .infinity)
                 }
         }
+        .focusable(interactions: .edit)
     }
 }
 

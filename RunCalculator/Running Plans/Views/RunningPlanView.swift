@@ -57,7 +57,8 @@ struct RunningPlanView: View {
                     .onTapGesture {
                         controller.selection = nil
                     }
-                    .onChange(of: controller.selection) { newValue in
+                    .onChange(of: controller.selection) {
+                        newValue, oldValue in
                         self.isEditing = newValue != nil
                     }
                 }
