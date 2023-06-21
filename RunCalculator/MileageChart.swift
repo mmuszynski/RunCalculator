@@ -16,45 +16,6 @@ struct ChartPoint: Identifiable {
     var group: String
 }
 
-extension ClosedRange where Bound: BinaryInteger {
-    static func +(lhs: Self, rhs: any BinaryInteger) -> Self {
-        let lower = lhs.lowerBound + Self.Bound.init(rhs)
-        let upper = lhs.upperBound + Self.Bound.init(rhs)
-        return lower...upper
-    }
-    static func -(lhs: Self, rhs: any BinaryInteger) -> Self {
-        let lower = lhs.lowerBound - Self.Bound.init(rhs)
-        let upper = lhs.upperBound - Self.Bound.init(rhs)
-        return lower...upper
-    }
-    
-    static func +=(lhs: inout Self, rhs: any BinaryInteger) {
-        lhs = lhs + rhs
-    }
-    
-    static func -=(lhs: inout Self, rhs: any BinaryInteger) {
-        lhs = lhs - rhs
-    }
-    
-    func scaled<T: BinaryFloatingPoint>(by scale: T) -> Self {
-        let center = T(self.upperBound - self.lowerBound) / 2
-        let lower = T(self.lowerBound) * scale
-        let upper = T(self.upperBound) * scale
-        let newRange = upper - lower
-        return Self.Bound(center - newRange / 2)...Self.Bound(center + newRange / 2)
-    }
-}
-
-func +(lhs: CGPoint, rhs: CGSize) -> CGPoint {
-    CGPoint(x: lhs.x + rhs.width, y: lhs.y + rhs.height)
-}
-
-extension CGSize {
-    func scaled(by scale: CGFloat) -> CGSize {
-        return CGSize(width: width * scale, height: height * scale)
-    }
-}
-
 struct MileageChart: View {
     @EnvironmentObject var hdc: HealthDataController
     var mileageCalculator = YearlyMileageCalculator()
@@ -105,51 +66,6 @@ struct MileageChart: View {
         }
     }
     
-    @State var year: Int = 2023
-    
-    @State private var _chartCenter: CGPoint = CGPoint(x: 365 / 2, y: 600 / 2)
-    var chartCenter: CGPoint {
-        _chartCenter + dragState.applying(CGAffineTransform(scaleX: -1, y: 1))
-    }
-    @State private var _magnification: CGFloat = 1
-    var magnification: CGFloat {
-        _magnification / magState
-    }
-    @State private var _chartSize: CGSize = CGSize(width: 365, height: 600)
-    var chartSize: CGSize {
-        _chartSize.scaled(by: magnification)
-    }
-    
-    var chartDisplayRangeX: ClosedRange<Int> {
-        Int(chartCenter.x - chartSize.width / 2)...Int(chartCenter.x + chartSize.width / 2)
-    }
-    var chartDisplayRangeY: ClosedRange<Int> {
-        Int(chartCenter.y - chartSize.height / 2)...Int(chartCenter.y + chartSize.height / 2)
-    }
-    
-    @GestureState var dragState: CGSize = .zero
-    var drag: some Gesture {
-            DragGesture()
-            .updating($dragState, body: { value, state, tx in
-                state = value.translation
-            })
-            .onEnded { value in
-                _chartCenter = _chartCenter + value.translation.applying(.init(scaleX: -1, y: 1))
-            }
-        }
-    
-    @GestureState var magState: CGFloat = 1
-    var mag: some Gesture {
-        MagnificationGesture()
-            .updating($magState) { mag, state, tx in
-                state = mag
-            }
-            .onEnded { value in
-                self._magnification = _magnification / value
-            }
-    }
-    
-    
     var body: some View {
         VStack {
             Chart(distances) {
@@ -158,14 +74,17 @@ struct MileageChart: View {
                          series: .value("Group", $0.group))
                 .foregroundStyle(by: .value("Group", $0.group))
             }
-            .chartXScale(domain: chartDisplayRangeX)
-            .chartYScale(domain: chartDisplayRangeY)
         }
         .task {
             self.distances = await hdc.calculateChartData()
         }
-        .gesture(drag)
-        .gesture(mag)
+        .chartXVisibleDomain(length: 100)
+        .chartYVisibleDomain(length: 100)
+        .chartScrollPosition(initialX: 0)
+        .chartScrollPosition(initialY: 0)
+        .chartScrollTargetBehavior(.valueAligned(unit: 25))
+        .chartScrollableAxes([.horizontal, .vertical])
+        .padding()
             
         
     }
