@@ -58,7 +58,7 @@ class HealthDataController: ObservableObject {
         }
     }
     
-    func getWorkouts(startDate: Date, endDate: Date) async -> [HKWorkout] {
+    func getWorkouts(startDate: Date = .distantPast, endDate: Date = .distantFuture) async -> [HKWorkout] {
         let workouts = await withCheckedContinuation { continuation in
             getWorkouts(startDate: startDate, endDate: endDate) { workouts in
                 continuation.resume(returning: workouts)
@@ -155,6 +155,71 @@ class HealthDataController: ObservableObject {
         case .weeks(_):
             break
         }
+    }
+    
+    /*
+     - MARK: Chart Data
+     ==========================================================================================
+     Methods relating to the creation of chart data
+     ==========================================================================================
+     */
+    
+    var cachedChartData: [ChartPoint] = []
+    
+    /// Calculates workout data and formats it for use in Swift Charts
+    func calculateChartData(workoutFilter: (HKWorkout)->Bool = { $0.sourceRevision.source.name == "Runkeeper" }) async -> [ChartPoint] {
+        logger.debug("Retrieving data for chart")
+        
+        if !cachedChartData.isEmpty {
+            return cachedChartData
+        }
+        
+        /// If workouts are empty, it's possible that they are not yet loaded, so try that first
+        if self.workouts.isEmpty {
+            await self.loadWorkouts()
+        }
+        
+        /// Set up distance chart points with a line for required mileage
+        var distances: [ChartPoint] = []
+        distances.append(ChartPoint(day: 1, mileage: 0, group: "Required Mileage"))
+        distances.append(ChartPoint(day: 365, mileage: 500, group: "Required Mileage"))
+        
+        /// Set up a year to deal with the current calculation
+        var calculationYear: Int?
+        
+        /// Note that you can pass a filter on the workouts if necessary, but that it will default to only the Runkeeper workouts
+        let relevantWorkouts = workouts.filter(workoutFilter).sorted { first, second in
+            first.startDate < second.startDate
+        }
+        
+        /// Set up a cumulative distance for the year and iterate over the workouts
+        /// This seems to assume that the workouts are ordered by date, ascending, so I added that above
+        var cumulativeDistance: Double = 0
+        for workout in relevantWorkouts {
+            
+            /// If the year of the workout is different than the year that we are currently calculating, change the year that we are calculating
+            if calculationYear != workout.startDate.year {
+                cumulativeDistance = 0
+                calculationYear = workout.startDate.year
+            }
+            
+            /// When a new date is found, create a vertical line by adding a two points, each for the day of the year, with one representing the mileage before the workout and one with the mileage after the workout
+            let date = workout.startDate
+            distances.append(ChartPoint(day: date.dayOfYear!, mileage: cumulativeDistance, group: "\(date.year)"))
+                
+            if let distance = workout.runningDistance {
+                cumulativeDistance += distance.doubleValue(for: .mile())
+            }
+                
+            distances.append(ChartPoint(day: date.dayOfYear!, mileage: cumulativeDistance, group: "\(date.year)"))
+        }
+        
+        return distances
+    }
+    
+    func resetCaches() {
+        self.workouts = []
+        self.cachedChartData = []
     }
 }
 

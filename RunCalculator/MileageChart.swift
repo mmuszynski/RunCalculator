@@ -9,10 +9,6 @@ import SwiftUI
 import Charts
 import HealthKit
 
-extension Date: Identifiable {
-    public var id: Self { self }
-}
-
 struct ChartPoint: Identifiable {
     var id: UUID = UUID()
     var day: Int
@@ -165,8 +161,8 @@ struct MileageChart: View {
             .chartXScale(domain: chartDisplayRangeX)
             .chartYScale(domain: chartDisplayRangeY)
         }
-        .onAppear {
-            self.recalculate()
+        .task {
+            self.distances = await hdc.calculateChartData()
         }
         .gesture(drag)
         .gesture(mag)
