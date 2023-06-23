@@ -15,23 +15,64 @@ extension Color {
 
 @main
 struct RunCalculatorApp: App {
-    let controller = HealthDataController()
+    let healthDataController = HealthDataController()
     let planController = RunningPlanViewController()
     
     var body: some Scene {
         WindowGroup {
-            TabView {
-                YearlyMileagePieChart()
-                    .tabItem { Text("Current") }
-                MileageChart()
-                    .tabItem { Text("Chart") }
-                WeeklyView()
-                    .tabItem { Text("Weeks") }
-                RunningPlanView()
-                    .environmentObject(planController)
-                    .tabItem { Text("Plan") }
-            }
-            .environmentObject(controller)
+            MainView()
+                .environmentObject(healthDataController)
+                .environmentObject(planController)
         }
     }
+}
+
+struct TabLabel: ViewModifier {
+    var imageName: String
+    var text: String
+    
+    func body(content: Content) -> some View {
+        content
+            .tabItem {
+                VStack {
+                    Image(systemName: imageName)
+                    Text(text)
+                }
+            }
+    }
+}
+
+extension View {
+    func tabLabel(_ text: String, image imageName: String) -> some View {
+        modifier(TabLabel(imageName: imageName, text: text))
+    }
+}
+
+struct MainView: View {
+    @EnvironmentObject var healthDataController: HealthDataController
+    @EnvironmentObject var planController: RunningPlanViewController
+    
+    
+    
+    var body: some View {
+        TabView {
+            YearlyMileagePieChart()
+                .tabLabel("Progress",
+                          image: "figure.run")
+            MileageChart()
+                .tabLabel("Chart",
+                          image: "chart.line.uptrend.xyaxis")
+            WeeklyView()
+                .tabLabel("Workouts",
+                          image: "calendar")
+            RunningPlanView()
+                .tabLabel("Plan",
+                          image: "calendar.badge.plus")
+        }
+    }
+}
+
+#Preview {
+    MainView()
+        .environmentObject(HealthDataController())
 }

@@ -75,13 +75,8 @@ struct WeeklyView: View {
                 }
             }
             .navigationTitle("Weeks")
-            .onAppear {
-                Task {
-                    let wk = await dataController.getWorkouts(startDate: .distantPast, endDate: .distantFuture)
-                    await MainActor.run {
-                        dataController.workouts = wk
-                    }
-                }
+            .task {
+                await dataController.loadWorkouts()
             }
         }
     }

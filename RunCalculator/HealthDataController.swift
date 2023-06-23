@@ -24,7 +24,16 @@ class HealthDataController: ObservableObject {
     @Published var workouts: [HKWorkout] = []
     @Published var quantity: HKQuantity?
     
-    func getWorkouts(startDate: Date, endDate: Date, _ completion: (([HKWorkout]?)->())?) {
+    private var lastCacheTime: Date?
+    
+    private func getWorkouts(startDate: Date, endDate: Date, _ completion: (([HKWorkout]?)->())?) {
+        if let lastCacheTime, abs(lastCacheTime.timeIntervalSinceNow) < 3600 {
+            //if it's been less than an hour, don't do anything
+            logger.info("Returning cached values")
+            completion?(workouts)
+            return
+        }
+        
         Task {
             if let status = try await store?.statusForAuthorizationRequest(toShare: [], read: [.workoutType()]) {
                 switch status {
@@ -50,6 +59,7 @@ class HealthDataController: ObservableObject {
                 logger.info("Returning HKSampleQuery with \(samples?.count ?? 0) samples")
                 
                 completion?(samples as? [HKWorkout])
+                self.lastCacheTime = Date()
             }
             
             logger.info("Executing HKSampleQuery")
@@ -58,7 +68,7 @@ class HealthDataController: ObservableObject {
         }
     }
     
-    func getWorkouts(startDate: Date = .distantPast, endDate: Date = .distantFuture) async -> [HKWorkout] {
+    private func getWorkouts(startDate: Date = .distantPast, endDate: Date = .distantFuture) async -> [HKWorkout] {
         let workouts = await withCheckedContinuation { continuation in
             getWorkouts(startDate: startDate, endDate: endDate) { workouts in
                 continuation.resume(returning: workouts)
@@ -173,11 +183,12 @@ class HealthDataController: ObservableObject {
     var cachedChartData: [ChartPoint] = []
     
     /// Calculates workout data and formats it for use in Swift Charts
-    func calculateChartData(workoutFilter: (HKWorkout)->Bool = { $0.sourceRevision.source.name == "Runkeeper" }) async -> [ChartPoint] {
+    func calculateChartData(workoutFilter: (HKWorkout)->Bool = { $0.sourceRevision.source.name == "Runkeeper" }) async {
         logger.debug("Retrieving data for chart")
         
         if !cachedChartData.isEmpty {
-            return cachedChartData
+            logger.debug("Cached data exists, bailing out")
+            return
         }
         
         /// If workouts are empty, it's possible that they are not yet loaded, so try that first
@@ -220,7 +231,7 @@ class HealthDataController: ObservableObject {
             distances.append(ChartPoint(day: date.dayOfYear!, mileage: cumulativeDistance, group: "\(date.year)"))
         }
         
-        return distances
+        self.cachedChartData = distances
     }
     
     func resetCaches() {
