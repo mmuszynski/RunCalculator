@@ -69,6 +69,8 @@ struct MileageChart: View {
     var body: some View {
         VStack {
             Chart(distances) {
+                RuleMark(x: .value("Today", Date().dayOfYear!))
+                    .foregroundStyle(.quaternary)
                 LineMark(x: .value("Date", $0.day),
                          y: .value("Distance", $0.mileage),
                          series: .value("Group", $0.group))

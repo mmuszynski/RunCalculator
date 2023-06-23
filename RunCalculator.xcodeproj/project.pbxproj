@@ -28,6 +28,8 @@
 		276C649329B262E5001C79F3 /* CircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C649229B262E5001C79F3 /* CircularSlider.swift */; };
 		276C649729B30E0A001C79F3 /* HealthDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C649629B30E0A001C79F3 /* HealthDataController.swift */; };
 		276C649A29B42BDB001C79F3 /* MileageChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C649929B42BDB001C79F3 /* MileageChart.swift */; };
+		2787D9B12A44732500B0CE57 /* YearlyMileagePieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787D9B02A44732500B0CE57 /* YearlyMileagePieChart.swift */; };
+		2787D9B32A44774000B0CE57 /* YearlyMileageInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787D9B22A44774000B0CE57 /* YearlyMileageInformationView.swift */; };
 		27897ADF2A17E45000E41DAB /* HKWorkoutSimilarity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27897ADE2A17E45000E41DAB /* HKWorkoutSimilarity.swift */; };
 		278D6E6E2A0743D0002695EB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D6E6D2A0743D0002695EB /* Persistence.swift */; };
 		278D6E702A0862C4002695EB /* HKWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D6E6F2A0862C4002695EB /* HKWorkoutView.swift */; };
@@ -90,6 +92,8 @@
 		276C649629B30E0A001C79F3 /* HealthDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataController.swift; sourceTree = "<group>"; };
 		276C649829B31241001C79F3 /* RunCalculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunCalculator.entitlements; sourceTree = "<group>"; };
 		276C649929B42BDB001C79F3 /* MileageChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageChart.swift; sourceTree = "<group>"; };
+		2787D9B02A44732500B0CE57 /* YearlyMileagePieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyMileagePieChart.swift; sourceTree = "<group>"; };
+		2787D9B22A44774000B0CE57 /* YearlyMileageInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyMileageInformationView.swift; sourceTree = "<group>"; };
 		27897ADE2A17E45000E41DAB /* HKWorkoutSimilarity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWorkoutSimilarity.swift; sourceTree = "<group>"; };
 		278D6E6D2A0743D0002695EB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		278D6E6F2A0862C4002695EB /* HKWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWorkoutView.swift; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 				275830702A033D4200487D76 /* DateUtilitiesWeek.swift */,
 				276C648D29B2521B001C79F3 /* YearlyMileageCalculator.swift */,
 				276C648B29B25213001C79F3 /* YearlyMileageCalculatorView.swift */,
+				2787D9B22A44774000B0CE57 /* YearlyMileageInformationView.swift */,
+				2787D9B02A44732500B0CE57 /* YearlyMileagePieChart.swift */,
 			);
 			path = "Yearly Mileage";
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 				278D6E722A0874A5002695EB /* HMSFormatter.swift in Sources */,
 				279B69502A225A0700527A5E /* RunningPlanWeeklyGoal.swift in Sources */,
 				276C646229B251ED001C79F3 /* RunCalculatorApp.swift in Sources */,
+				2787D9B12A44732500B0CE57 /* YearlyMileagePieChart.swift in Sources */,
 				2756DD012A205BE80010CDBD /* RunningPlanDailyGoal.swift in Sources */,
 				276C648C29B25213001C79F3 /* YearlyMileageCalculatorView.swift in Sources */,
 				27C0B2092A104A52008D0A11 /* DateRangeUtilities.swift in Sources */,
@@ -427,6 +434,7 @@
 				272AD6672A1C527400938128 /* DateInterval-Day.swift in Sources */,
 				276C649A29B42BDB001C79F3 /* MileageChart.swift in Sources */,
 				276C648E29B2521B001C79F3 /* YearlyMileageCalculator.swift in Sources */,
+				2787D9B32A44774000B0CE57 /* YearlyMileageInformationView.swift in Sources */,
 				27D298ED2A317EB500052894 /* Logging.swift in Sources */,
 				2756DD0C2A20EBA60010CDBD /* RunningPlanHeaderGridRow.swift in Sources */,
 				27C0B2072A0E9A97008D0A11 /* WorkoutPeriodSummary.swift in Sources */,

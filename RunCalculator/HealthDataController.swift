@@ -70,8 +70,14 @@ class HealthDataController: ObservableObject {
     @MainActor func loadWorkouts(startDate: Date = .distantPast, endDate: Date = .distantFuture) async {
         logger.debug("Loading workouts")
         
-        let workouts = await getWorkouts(startDate: startDate, endDate: endDate)
-        self.workouts = workouts
+        if workouts.isEmpty {
+            logger.debug("No cached workouts found, getting health data")
+            let workouts = await getWorkouts(startDate: startDate, endDate: endDate)
+            self.workouts = workouts
+        } else {
+            logger.debug("Cached workouts found, not updating")
+        }
+        
         self.computeSummaries()
         self.calculator.setWorkouts(workouts)
     }

@@ -21,14 +21,8 @@ struct RunCalculatorApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                VStack {
-                    YearlyMileageCalculatorView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(.gray)
-                    HKWorkoutSummaryGrid()
-                        .frame(height: 180)
-                }
-                .tabItem { Text("Current") }
+                YearlyMileagePieChart()
+                    .tabItem { Text("Current") }
                 MileageChart()
                     .tabItem { Text("Chart") }
                 WeeklyView()
