@@ -8,6 +8,7 @@
 import Foundation
 
 struct RunningPlan: Codable {
+    var name: String = "New Plan"
     var goals: [RunningPlanWeeklyGoal] = []
     
     mutating func addWeek(_ week: RunningPlanWeeklyGoal? = nil) {
@@ -60,19 +61,50 @@ extension RunningPlan {
         return plan
     }
     
-    static var monumental: RunningPlan = [
-        [3, 5, 0, 4, 0, 6, 0],
-        [3, 5, 0, 4, 0, 7, 0],
-        [3, 5, 0, 4, 0, 6, 0],
-        [3, 6, 0, 5, 0, 8, 0],
-        [4, 6, 0, 5, 0, 6, 0],
-        [4, 6, 0, 5, 0, 10, 0],
-        [4, 6, 0, 5, 0, 8, 0],
-        [4, 6, 0, 5, 0, 13, 0],
-        [3, 6, 0, 4, 0, 8, 0],
-        [4, 6, 0, 5, 0, 12, 0],
-        [4, 6, 0, 5, 0, 10, 0],
-        [4, 6, 0, 5, 0, 6, 0],
+    static var monumental = RunningPlan(name: "Monumental Half") {
+        [3, 5, 0, 4, 0, 6, 0]
+        [3, 5, 0, 4, 0, 7, 0]
+        [3, 5, 0, 4, 0, 6, 0]
+        [3, 6, 0, 5, 0, 8, 0]
+        [4, 6, 0, 5, 0, 6, 0]
+        [4, 6, 0, 5, 0, 10, 0]
+        [4, 6, 0, 5, 0, 8, 0]
+        [4, 6, 0, 5, 0, 13, 0]
+        [3, 6, 0, 4, 0, 8, 0]
+        [4, 6, 0, 5, 0, 12, 0]
+        [4, 6, 0, 5, 0, 10, 0]
+        [4, 6, 0, 5, 0, 6, 0]
         [3, 5, 0, 4, 0, 13, 0]
-    ]
+    }
+    
+    init(name: String, @RunningPlanBuilder weeks: ()->[RunningPlanWeeklyGoal] ) {
+        let weeklyGoals = weeks()
+        self = RunningPlan(name: name, goals: weeklyGoals)
+    }
+}
+
+extension RunningPlan: Identifiable {
+    var id: String { name }
+}
+
+extension RunningPlan: Equatable {
+    static func == (lhs: RunningPlan, rhs: RunningPlan) -> Bool {
+        return lhs.name == rhs.name
+    }
+}
+
+extension RunningPlan: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.name)
+    }
+}
+
+@resultBuilder struct RunningPlanBuilder {
+    static func buildBlock(_ components: [Int]...) -> [RunningPlanWeeklyGoal] {
+        return Array(components).enumerated().map { offset, element in
+            var plan = RunningPlanWeeklyGoal(element)
+            plan.week = offset
+            return plan
+        }
+    }
 }

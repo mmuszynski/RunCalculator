@@ -180,21 +180,18 @@ class HealthDataController: ObservableObject {
      ==========================================================================================
      */
     
-    var cachedChartData: [ChartPoint] = []
+    @Published var cachedChartData: [ChartPoint] = []
     
     /// Calculates workout data and formats it for use in Swift Charts
-    func calculateChartData(workoutFilter: (HKWorkout)->Bool = { $0.sourceRevision.source.name == "Runkeeper" }) async {
+    @MainActor func calculateChartData(workoutFilter: (HKWorkout)->Bool = { $0.sourceRevision.source.name == "Runkeeper" }) async {
         logger.debug("Retrieving data for chart")
         
         if !cachedChartData.isEmpty {
-            logger.debug("Cached data exists, bailing out")
+            logger.debug("Chart data found, using cached version")
             return
         }
         
-        /// If workouts are empty, it's possible that they are not yet loaded, so try that first
-        if self.workouts.isEmpty {
-            await self.loadWorkouts()
-        }
+        await self.loadWorkouts()
         
         /// Set up distance chart points with a line for required mileage
         var distances: [ChartPoint] = []

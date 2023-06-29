@@ -16,19 +16,28 @@ struct ChartPoint: Identifiable {
     var group: String
 }
 
+var color = Color(white: 0.8)
+
 struct MileageChart: View {
     @EnvironmentObject var hdc: HealthDataController
-    var mileageCalculator = YearlyMileageCalculator()
-        
+    
     var body: some View {
         VStack {
-            Chart(hdc.cachedChartData) {
-                RuleMark(x: .value("Today", Date().dayOfYear!))
-                    .foregroundStyle(.quaternary)
+            Chart(hdc.cachedChartData) {                RuleMark(x: .value("Today", Date().dayOfYear!))
+                    .foregroundStyle(.tertiary)
+                    .annotation(alignment: .center) {
+                        Text("Today")
+                            .font(.caption)
+                    }
+                    .lineStyle(StrokeStyle(dash: [5]))
+                
                 LineMark(x: .value("Date", $0.day),
                          y: .value("Distance", $0.mileage),
                          series: .value("Group", $0.group))
                 .foregroundStyle(by: .value("Group", $0.group))
+            }
+            .chartYAxis {
+                AxisMarks(position: .leading)
             }
         }
         .task {
@@ -39,9 +48,9 @@ struct MileageChart: View {
         .chartXVisibleDomain(length: 100)
         .chartYVisibleDomain(length: 100)
         .chartScrollPosition(initialX: max(0,Date().dayOfYear!-75))
-        .chartScrollPosition(initialY: 100)
+        .chartScrollPosition(initialY: max(100,hdc.calculator.mileageAsOfToday + 50))
         .padding()
-            
+        
         
     }
 }

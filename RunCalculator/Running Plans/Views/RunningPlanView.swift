@@ -8,59 +8,26 @@
 import SwiftUI
 
 struct RunningPlanView: View {
-    @EnvironmentObject var controller: RunningPlanViewController
+    @Binding var plan: RunningPlan
     @FocusState var isEditing: Bool
     
     var body: some View {
         GeometryReader { g in
-            ZStack {
-                TextField("", text: $controller.editString)
-                    .focused($isEditing, equals: true)
-                    .keyboardType(.decimalPad)
-                    .opacity(0)
-                
-                VStack {
-                    ScrollView {
-                        Grid(horizontalSpacing: 0,
-                             verticalSpacing: 0) {
-                            RunningPlanHeaderGridRow()
-                            
-                            ForEach(controller.plan.goals) { week in
-                                
-                                HStack {
-                                    Text("wk \(week.week + 1)")
-                                        .font(.caption)
-                                        .fontWeight(.ultraLight)
-                                        .frame(height: 0)
-                                    VStack {
-                                        Divider()
-                                    }
-                                }
-                                
-                                RunningPlanWeekGridRow(week: week)
-                            }
-                            
-                            Divider()
-                            
-                            GridRow {
-                                Button("Add a week") {
-                                    withAnimation {
-                                        controller.plan.addWeek()
-                                    }
-                                }
-                                .gridCellColumns(9)
-                                .frame(height: 30)
-                            }
+            VStack {
+                ScrollView {
+                    Grid(horizontalSpacing: 0, verticalSpacing: 0) {
+                        
+                        RunningPlanHeaderGridRow()
+                        
+                        ForEach(plan.goals) { week in
+                            WeekHeader(week: week.id)
+                            RunningPlanWeekGridRow(week: week)
                         }
-                        .monospacedDigit()
+                        
                     }
-                    .onTapGesture {
-                        controller.selection = nil
-                    }
-                    .onChange(of: controller.selection) {
-                        newValue, oldValue in
-                        self.isEditing = newValue != nil
-                    }
+                    .padding()
+                    .monospacedDigit()
+                    .navigationTitle(plan.name)
                 }
             }
         }
@@ -69,7 +36,23 @@ struct RunningPlanView: View {
 
 struct RunningPlanView_Previews: PreviewProvider {
     static var previews: some View {
-        RunningPlanView()
-            .environmentObject(RunningPlanViewController())
+        RunningPlanView(plan: .constant(.monumental))
+            .padding()
+    }
+}
+
+struct WeekHeader: View {
+    var week: Int
+    
+    var body: some View {
+        HStack {
+            Text("wk \(week + 1)")
+                .font(.caption)
+                .fontWeight(.ultraLight)
+                .frame(height: 0)
+            VStack {
+                Divider()
+            }
+        }
     }
 }

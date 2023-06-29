@@ -62,10 +62,10 @@ struct MainView: View {
             MileageChart()
                 .tabLabel("Chart",
                           image: "chart.line.uptrend.xyaxis")
-            WeeklyView()
+            CalendarView()
                 .tabLabel("Workouts",
                           image: "calendar")
-            RunningPlanView()
+            RunningPlanNavigationView()
                 .tabLabel("Plan",
                           image: "calendar.badge.plus")
         }
@@ -75,4 +75,5 @@ struct MainView: View {
 #Preview {
     MainView()
         .environmentObject(HealthDataController())
+        .environmentObject(RunningPlanViewController())
 }

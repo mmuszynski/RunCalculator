@@ -21,6 +21,20 @@ extension String {
 }
 
 class RunningPlanViewController: ObservableObject {
+    @Published var runningPlans: [RunningPlan] = [.monumental]
+    
+    func addPlan() {
+        var proposedName = "New Plan"
+        var num = 0
+        while runningPlans.contains(where: { $0.name == proposedName }) {
+            num += 1
+            proposedName = "New Plan \(num)"
+        }
+        
+        self.runningPlans.append(RunningPlan(name: proposedName))
+        self.objectWillChange.send()
+    }
+    
     @Published var plan: RunningPlan = .monumental
     @Published var selection: RunningPlanDailyGoal? {
         didSet {

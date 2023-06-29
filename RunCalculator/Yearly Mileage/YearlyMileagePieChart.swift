@@ -21,20 +21,22 @@ fileprivate struct PieGraphElement {
 struct YearlyMileagePieChart: View {
     @EnvironmentObject var hdc: HealthDataController
     var body: some View {
-        Chart {
-            SectorMark(angle: .value("Zero", 1),
-                       innerRadius: .ratio(0.8))
-            PieGraphElement(name: "Completed", value: hdc.calculator.mileageAsOfToday)
-                .sectorMark
-                .foregroundStyle(.primary)
-            PieGraphElement(name: "Remaining", value: hdc.calculator.mileageRemainingAsOfToday)
-                .sectorMark
-                .foregroundStyle(.quaternary)
+        ZStack {
+            Chart {
+                SectorMark(angle: .value("Zero", 1),
+                           innerRadius: .ratio(0.8))
+                PieGraphElement(name: "Completed", value: hdc.calculator.mileageAsOfToday)
+                    .sectorMark
+                    .foregroundStyle(.primary)
+                PieGraphElement(name: "Remaining", value: hdc.calculator.mileageRemainingAsOfToday)
+                    .sectorMark
+                    .foregroundStyle(.tertiary)
+            }
+            .foregroundStyle(.red)
+            .chartBackground(content: { chart in
+                YearlyMileageInformationView()
+            })
         }
-        .foregroundStyle(.red)
-        .chartBackground(content: { chart in
-            YearlyMileageInformationView()
-        })
         .padding()
         .task {
             await hdc.loadWorkouts()

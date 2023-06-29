@@ -31,6 +31,17 @@ struct RunningPlanWeeklyGoal: Codable {
     }
 }
 
+extension RunningPlanWeeklyGoal {
+    init(_ elements: [Int]) {
+        self.week = 0
+        var newGoals = elements.enumerated().map { (day, miles) in RunningPlanDailyGoal(miles: Double(miles), day: day, week: self.week)}
+        while newGoals.count < 7 {
+            newGoals.append(RunningPlanDailyGoal(miles: 0, day: newGoals.count, week: self.week))
+        }
+        self.goals = newGoals
+    }
+}
+
 extension RunningPlanWeeklyGoal: ExpressibleByArrayLiteral {
     init(arrayLiteral elements: Double...) {
         self.week = 0

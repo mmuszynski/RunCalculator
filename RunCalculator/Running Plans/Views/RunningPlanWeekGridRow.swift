@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RunningPlanWeekGridRow: View {
-    @EnvironmentObject var controller: RunningPlanViewController
     var week: RunningPlanWeeklyGoal
     
     var body: some View {
@@ -16,10 +15,7 @@ struct RunningPlanWeekGridRow: View {
             Color.clear
                 .frame(width: 10)
             ForEach(week.goals) { day in
-                RunningPlanDailyView(goal: day, isSelected: controller.selection?.id == day.id)
-                    .onTapGesture {
-                        controller.selection = day
-                    }
+                RunningPlanDailyView(goal: day, isSelected: false)
             }
             
             ZStack {
