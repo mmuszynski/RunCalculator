@@ -34,7 +34,7 @@ extension Date {
     }
     
     static var weeksRemainingInCurrentYear: Int {
-        let now = Date()
+        let now = Date.current
         let weeks = Date.weekStarts(forYearOf: now)
         guard let currentWeek = weeks.firstIndex(where: { now < $0 }) else { fatalError() }
         

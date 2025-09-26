@@ -10,9 +10,33 @@ import Foundation
 struct RunningPlan: Codable {
     var name: String = "New Plan"
     var goals: [RunningPlanWeeklyGoal] = []
+    var allDailyGoals: [RunningPlanDailyGoal] {
+        return goals.reduce([]) { partialResult, weekly in
+            partialResult + weekly.goals
+        }
+    }
+    
+    var weeks: Int { goals.count }
+    
+    var runCount: Int {
+        goals.reduce(0) { partialResult, week in
+            partialResult + week.goals.filter({ $0.miles > 0 }).count
+        }
+    }
+    
+    var totalMileage: Double {
+        goals.reduce(0) { partialResult, week in
+            partialResult + week.totalMiles
+        }
+    }
+    
+    var milesPerRun: Double {
+        guard runCount > 0 else { return 0 }
+        return totalMileage / Double(runCount)
+    }
     
     mutating func addWeek(_ week: RunningPlanWeeklyGoal? = nil) {
-        if var week {
+        if let week {
             week.week = goals.count
             goals.append(week)
         } else {
@@ -62,19 +86,35 @@ extension RunningPlan {
     }
     
     static var monumental = RunningPlan(name: "Monumental Half") {
-        [3, 5, 0, 4, 0, 6, 0]
-        [3, 5, 0, 4, 0, 7, 0]
-        [3, 5, 0, 4, 0, 6, 0]
-        [3, 6, 0, 5, 0, 8, 0]
-        [4, 6, 0, 5, 0, 6, 0]
-        [4, 6, 0, 5, 0, 10, 0]
-        [4, 6, 0, 5, 0, 8, 0]
-        [4, 6, 0, 5, 0, 13, 0]
-        [3, 6, 0, 4, 0, 8, 0]
-        [4, 6, 0, 5, 0, 12, 0]
-        [4, 6, 0, 5, 0, 10, 0]
-        [4, 6, 0, 5, 0, 6, 0]
-        [3, 5, 0, 4, 0, 13, 0]
+        [0, 3, 5, 0, 4, 0, 6]
+        [0, 3, 5, 0, 4, 0, 7]
+        [0, 3, 5, 0, 4, 0, 6]
+        [0, 3, 6, 0, 5, 0, 8]
+        [0, 4, 6, 0, 5, 0, 6]
+        [0, 4, 6, 0, 5, 0, 10]
+        [0, 4, 6, 0, 5, 0, 8]
+        [0, 4, 6, 0, 5, 0, 13]
+        [0, 3, 6, 0, 4, 0, 8]
+        [0, 4, 6, 0, 5, 0, 12]
+        [0, 4, 6, 0, 5, 0, 10]
+        [0, 4, 6, 0, 5, 0, 6]
+        [0, 3, 5, 0, 4, 0, 13]
+    }
+    
+    static var monumentalPacer = RunningPlan(name: "Monumental Half - Pacer") {
+        [0, 5, 7, 3, 5, 0, 8]
+        [0, 5, 7, 3, 5, 0, 10]
+        [0, 5, 7, 3, 5, 0, 8]
+        [0, 5, 8, 4, 6, 0, 12]
+        [0, 6, 8, 4, 6, 0, 8]
+        [0, 6, 8, 4, 7, 0, 14]
+        [0, 6, 8, 4, 7, 0, 10]
+        [0, 6, 8, 4, 7, 0, 14]
+        [0, 6, 8, 4, 7, 0, 10]
+        [0, 5, 7, 0, 6, 0, 13]
+        [0, 6, 7, 4, 7, 0, 16]
+        [0, 6, 8, 4, 6, 0, 8]
+        [0, 5, 6, 0, 5, 0, 13]
     }
     
     init(name: String, @RunningPlanBuilder weeks: ()->[RunningPlanWeeklyGoal] ) {
@@ -102,7 +142,7 @@ extension RunningPlan: Hashable {
 @resultBuilder struct RunningPlanBuilder {
     static func buildBlock(_ components: [Int]...) -> [RunningPlanWeeklyGoal] {
         return Array(components).enumerated().map { offset, element in
-            var plan = RunningPlanWeeklyGoal(element)
+            let plan = RunningPlanWeeklyGoal(element)
             plan.week = offset
             return plan
         }

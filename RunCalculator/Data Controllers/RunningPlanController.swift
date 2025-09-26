@@ -1,11 +1,14 @@
 //
-//  RunningPlanViewController.swift
+//  RunningPlanController.swift
 //  RunCalculator
 //
 //  Created by Mike Muszynski on 5/27/23.
 //
 
 import SwiftUI
+import OSLog
+
+fileprivate let logger = Logger(subsystem: "com.mmuszynski.runcalculator", category: "RunningPlanController")
 
 extension String {
     fileprivate var sanitizeDecimal: String {
@@ -20,8 +23,46 @@ extension String {
     }
 }
 
-class RunningPlanViewController: ObservableObject {
-    @Published var runningPlans: [RunningPlan] = [.monumental]
+class RunningPlanController: ObservableObject {
+    @Published var runningPlans: [RunningPlan] = [
+        .monumental,
+        .monumentalPacer
+    ]
+    
+    @Published var selectedPlan: RunningPlanSelection? {
+        didSet {
+            do {
+                try saveSelectedPlan()
+            } catch {
+                logger.debug("Couldn't save selected plan with: \(error)")
+            }
+        }
+    }
+    
+    init() {
+        do {
+            logger.trace("Loading selected running plan")
+            try self.loadSelectedPlan()
+        } catch {
+            logger.debug("Couldn't load selection with: \(error)")
+        }
+        
+        requestNotificationPermission()
+    }
+    
+    func saveSelectedPlan() throws {
+        if let selectedPlan {
+            try selectedPlan.savePlanAsSelection()
+        } else {
+            try RunningPlanSelection.clearSavedSelection()
+        }
+    }
+    
+    func loadSelectedPlan() throws {
+        self.selectedPlan = try RunningPlanSelection.loadSelectedPlan()
+        reloadTodaysGoal()
+        setupNotifications()
+    }
     
     func addPlan() {
         var proposedName = "New Plan"
@@ -50,6 +91,8 @@ class RunningPlanViewController: ObservableObject {
         }
     }
     
+    @Published var todaysGoal: RunningPlanDailyGoal?
+    
     /// A string representing the mileage that is being edited
     ///
     /// When a daily goal is selected, this  string will hold a textual representation of the mileage for that goal
@@ -59,7 +102,7 @@ class RunningPlanViewController: ObservableObject {
             if editString.sanitizeDecimal != editString {
                 editString = editString.sanitizeDecimal
             }
-
+            
             keypress(nil)
         }
     }
@@ -70,8 +113,8 @@ class RunningPlanViewController: ObservableObject {
     ///   - amount: The amount to set the mileage to.
     func setSelectedGoal(_ daily: RunningPlanDailyGoal?, to amount: Double) {
         guard let daily = daily else { return }
-        var week = plan.goals[daily.week]
-        var day = week.goals[daily.day]
+        let week = plan.goals[daily.week]
+        let day = week.goals[daily.day]
         
         day.miles = amount
         if day.miles < 0 { day.miles = 0 }
@@ -113,5 +156,34 @@ class RunningPlanViewController: ObservableObject {
         } else {
             print("Couldn't get number from string")
         }
+    }
+    
+    func requestNotificationPermission() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .badge]) { granted, error in
+            
+            if let error = error {
+                logger.debug("Couldn't get notification authorization with \(error)")
+            }
+            
+            //was it granted?
+        }
+    }
+    
+    /// Removes all pending notifications and sets up a new set of upcoming notifications for the currently selected plan
+    func setupNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        self.selectedPlan?.upcomingGoals(after: .current).forEach { goal in
+            self.selectedPlan?.registerNotification(for: goal)
+        }
+        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+            //print(requests.count)
+        }
+    }
+    
+    func reloadTodaysGoal() {
+        //Gets a date two hours in the future. This should mean that the goal date is tomorrow after 10pm
+        let testDate = Calendar.current.date(byAdding: .hour, value: 2, to: .current) ?? .current
+        self.todaysGoal = self.selectedPlan?.goal(for: testDate)
     }
 }

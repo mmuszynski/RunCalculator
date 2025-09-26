@@ -9,58 +9,71 @@
 /* Begin PBXBuildFile section */
 		270160512A0D2D9E00A4BF31 /* HKWorkoutSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270160502A0D2D9E00A4BF31 /* HKWorkoutSummaryCard.swift */; };
 		270160532A0D2EAC00A4BF31 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270160522A0D2EAC00A4BF31 /* Formatters.swift */; };
+		270A01002C739E51006F4033 /* InProgressMileageGoalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A00FF2C739E51006F4033 /* InProgressMileageGoalInfoView.swift */; };
+		270A01042C73A3CC006F4033 /* PreviousMileageGoalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A01032C73A3CC006F4033 /* PreviousMileageGoalInfoView.swift */; };
+		270A01062C73A3E6006F4033 /* UpcomingMileageGoalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A01052C73A3E6006F4033 /* UpcomingMileageGoalInfoView.swift */; };
+		270A010A2C73A8DB006F4033 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 270A01092C73A8DB006F4033 /* Localizable.xcstrings */; };
+		270B6CC12A521B7200B07641 /* RunningPlanListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270B6CC02A521B7200B07641 /* RunningPlanListDetailView.swift */; };
+		270B6CC32A55A41400B07641 /* TextWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270B6CC22A55A41400B07641 /* TextWithImage.swift */; };
+		270B6CC52A55CF2C00B07641 /* RunningPlanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270B6CC42A55CF2C00B07641 /* RunningPlanDetailViewController.swift */; };
+		270F77B02C501081003ED596 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270F77AF2C501081003ED596 /* DebugView.swift */; };
 		272AD6672A1C527400938128 /* DateInterval-Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272AD6662A1C527400938128 /* DateInterval-Day.swift */; };
+		2751BDE02C543B290083AEA1 /* NewMileageGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BDDF2C543B290083AEA1 /* NewMileageGoalView.swift */; };
+		2751BDE32C5442230083AEA1 /* MileagePieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BDE22C5442230083AEA1 /* MileagePieChart.swift */; };
+		2751BDE52C54527B0083AEA1 /* MileageGoalCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BDE42C54527B0083AEA1 /* MileageGoalCalculations.swift */; };
+		275596EC2A7FD3B000B26729 /* DateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275596EB2A7FD3B000B26729 /* DateModifier.swift */; };
 		2756DD012A205BE80010CDBD /* RunningPlanDailyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2756DD002A205BE80010CDBD /* RunningPlanDailyGoal.swift */; };
 		2756DD0A2A20618C0010CDBD /* RunningPlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2756DD092A20618C0010CDBD /* RunningPlanTests.swift */; };
 		2756DD0C2A20EBA60010CDBD /* RunningPlanHeaderGridRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2756DD0B2A20EBA60010CDBD /* RunningPlanHeaderGridRow.swift */; };
 		27581BE02A213F6800DA7B9A /* RunningPlanDailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27581BDF2A213F6800DA7B9A /* RunningPlanDailyView.swift */; };
 		2758306129FB059E00487D76 /* WeeklyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758306029FB059E00487D76 /* WeeklyView.swift */; };
 		275830712A033D4200487D76 /* DateUtilitiesWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275830702A033D4200487D76 /* DateUtilitiesWeek.swift */; };
+		27614DF72A4E3046001D3628 /* RunningPlanHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27614DF62A4E3046001D3628 /* RunningPlanHeader.swift */; };
+		2766FD432C4EE352007AEF0A /* CircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C649229B262E5001C79F3 /* CircularSlider.swift */; };
 		276C646229B251ED001C79F3 /* RunCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C646129B251ED001C79F3 /* RunCalculatorApp.swift */; };
 		276C646629B251EF001C79F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 276C646529B251EF001C79F3 /* Assets.xcassets */; };
 		276C646929B251EF001C79F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 276C646829B251EF001C79F3 /* Preview Assets.xcassets */; };
 		276C647329B251EF001C79F3 /* RunCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C647229B251EF001C79F3 /* RunCalculatorTests.swift */; };
-		276C647D29B251EF001C79F3 /* RunCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C647C29B251EF001C79F3 /* RunCalculatorUITests.swift */; };
-		276C647F29B251EF001C79F3 /* RunCalculatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C647E29B251EF001C79F3 /* RunCalculatorUITestsLaunchTests.swift */; };
 		276C648C29B25213001C79F3 /* YearlyMileageCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C648B29B25213001C79F3 /* YearlyMileageCalculatorView.swift */; };
 		276C648E29B2521B001C79F3 /* YearlyMileageCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C648D29B2521B001C79F3 /* YearlyMileageCalculator.swift */; };
 		276C649129B25804001C79F3 /* DateUtilitiesYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C649029B25804001C79F3 /* DateUtilitiesYear.swift */; };
-		276C649329B262E5001C79F3 /* CircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C649229B262E5001C79F3 /* CircularSlider.swift */; };
 		276C649729B30E0A001C79F3 /* HealthDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C649629B30E0A001C79F3 /* HealthDataController.swift */; };
 		276C649A29B42BDB001C79F3 /* MileageChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C649929B42BDB001C79F3 /* MileageChart.swift */; };
-		2787D9B12A44732500B0CE57 /* YearlyMileagePieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787D9B02A44732500B0CE57 /* YearlyMileagePieChart.swift */; };
-		2787D9B32A44774000B0CE57 /* YearlyMileageInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787D9B22A44774000B0CE57 /* YearlyMileageInformationView.swift */; };
+		27757E362A75B61C004A2D28 /* RunningPlanSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27757E352A75B61C004A2D28 /* RunningPlanSelection.swift */; };
+		278437732C13930D00F05F01 /* MileageGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278437722C13930D00F05F01 /* MileageGoal.swift */; };
+		278747DE2A7EBB05003C6C7D /* DateGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278747DD2A7EBB04003C6C7D /* DateGenerator.swift */; };
+		2787D9B12A44732500B0CE57 /* MileageGoalTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787D9B02A44732500B0CE57 /* MileageGoalTabView.swift */; };
+		2787D9B32A44774000B0CE57 /* MileageGoalInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787D9B22A44774000B0CE57 /* MileageGoalInformationView.swift */; };
 		27897ADF2A17E45000E41DAB /* HKWorkoutSimilarity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27897ADE2A17E45000E41DAB /* HKWorkoutSimilarity.swift */; };
 		278D6E6E2A0743D0002695EB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D6E6D2A0743D0002695EB /* Persistence.swift */; };
 		278D6E702A0862C4002695EB /* HKWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D6E6F2A0862C4002695EB /* HKWorkoutView.swift */; };
 		278D6E722A0874A5002695EB /* HMSFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D6E712A0874A5002695EB /* HMSFormatter.swift */; };
 		278D6E742A09BA96002695EB /* HKWorkoutList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D6E732A09BA96002695EB /* HKWorkoutList.swift */; };
 		2791BFF82A46208700C7E86B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2791BFF72A46208700C7E86B /* CalendarView.swift */; };
-		2798F0DD2A4DD8D400B11369 /* RunPlanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2798F0DC2A4DD8D400B11369 /* RunPlanController.swift */; };
+		2793737F2A7C21CB00352A14 /* DailyGoalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2793737E2A7C21CB00352A14 /* DailyGoalTests.swift */; };
 		2798F0E32A4DDAB300B11369 /* RunningPlanNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2798F0E22A4DDAB300B11369 /* RunningPlanNavigationView.swift */; };
 		279B694E2A223BEC00527A5E /* RunningPlanWeekGridRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B694D2A223BEC00527A5E /* RunningPlanWeekGridRow.swift */; };
 		279B69502A225A0700527A5E /* RunningPlanWeeklyGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B694F2A225A0700527A5E /* RunningPlanWeeklyGoal.swift */; };
-		279B69522A22704600527A5E /* RunningPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B69512A22704600527A5E /* RunningPlanViewController.swift */; };
+		279B69522A22704600527A5E /* RunningPlanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B69512A22704600527A5E /* RunningPlanController.swift */; };
 		279B69542A227BD800527A5E /* RunningPlanKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B69532A227BD800527A5E /* RunningPlanKeyboard.swift */; };
+		279F85CA2C55652900C2DC8F /* MileageGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F85C92C55652900C2DC8F /* MileageGoalViewController.swift */; };
+		27AF4DA52C14F234002CA364 /* GoalSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF4DA42C14F234002CA364 /* GoalSelectionView.swift */; };
+		27AF4DA72C14F263002CA364 /* MileageGoalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF4DA62C14F263002CA364 /* MileageGoalController.swift */; };
+		27AF4DA92C14FB59002CA364 /* GoalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF4DA82C14FB59002CA364 /* GoalEditView.swift */; };
 		27B822472A21510D0098D734 /* RunningPlanEditControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B822462A21510D0098D734 /* RunningPlanEditControls.swift */; };
 		27BF388A2A073A420066A485 /* RunningPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BF38892A073A420066A485 /* RunningPlan.swift */; };
 		27C0B2052A0E9A6F008D0A11 /* HKWorkoutSummaryGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0B2042A0E9A6F008D0A11 /* HKWorkoutSummaryGrid.swift */; };
 		27C0B2072A0E9A97008D0A11 /* WorkoutPeriodSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0B2062A0E9A97008D0A11 /* WorkoutPeriodSummary.swift */; };
 		27C0B2092A104A52008D0A11 /* DateRangeUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0B2082A104A52008D0A11 /* DateRangeUtilities.swift */; };
 		27C0B20B2A141579008D0A11 /* RunningPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0B20A2A141579008D0A11 /* RunningPlanView.swift */; };
+		27CB622F2A7978F10035F67D /* TodaysRunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CB622E2A7978F10035F67D /* TodaysRunView.swift */; };
 		27D298ED2A317EB500052894 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D298EC2A317EB500052894 /* Logging.swift */; };
 		27DE26662A2651DB00049D3D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DE26652A2651DB00049D3D /* Colors.xcassets */; };
+		27E272532C0E771E0037B7E8 /* HKWorkout+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E272522C0E771E0037B7E8 /* HKWorkout+Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		276C646F29B251EF001C79F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 276C645629B251ED001C79F3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 276C645D29B251ED001C79F3;
-			remoteInfo = RunCalculator;
-		};
-		276C647929B251EF001C79F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 276C645629B251ED001C79F3 /* Project object */;
 			proxyType = 1;
@@ -72,22 +85,32 @@
 /* Begin PBXFileReference section */
 		270160502A0D2D9E00A4BF31 /* HKWorkoutSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWorkoutSummaryCard.swift; sourceTree = "<group>"; };
 		270160522A0D2EAC00A4BF31 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		270A00FF2C739E51006F4033 /* InProgressMileageGoalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressMileageGoalInfoView.swift; sourceTree = "<group>"; };
+		270A01032C73A3CC006F4033 /* PreviousMileageGoalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousMileageGoalInfoView.swift; sourceTree = "<group>"; };
+		270A01052C73A3E6006F4033 /* UpcomingMileageGoalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMileageGoalInfoView.swift; sourceTree = "<group>"; };
+		270A01092C73A8DB006F4033 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		270B6CC02A521B7200B07641 /* RunningPlanListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanListDetailView.swift; sourceTree = "<group>"; };
+		270B6CC22A55A41400B07641 /* TextWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithImage.swift; sourceTree = "<group>"; };
+		270B6CC42A55CF2C00B07641 /* RunningPlanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanDetailViewController.swift; sourceTree = "<group>"; };
+		270F77AF2C501081003ED596 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		272AD6662A1C527400938128 /* DateInterval-Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateInterval-Day.swift"; sourceTree = "<group>"; };
+		2751BDDF2C543B290083AEA1 /* NewMileageGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMileageGoalView.swift; sourceTree = "<group>"; };
+		2751BDE22C5442230083AEA1 /* MileagePieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileagePieChart.swift; sourceTree = "<group>"; };
+		2751BDE42C54527B0083AEA1 /* MileageGoalCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalCalculations.swift; sourceTree = "<group>"; };
+		275596EB2A7FD3B000B26729 /* DateModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateModifier.swift; sourceTree = "<group>"; };
 		2756DD002A205BE80010CDBD /* RunningPlanDailyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanDailyGoal.swift; sourceTree = "<group>"; };
 		2756DD092A20618C0010CDBD /* RunningPlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanTests.swift; sourceTree = "<group>"; };
 		2756DD0B2A20EBA60010CDBD /* RunningPlanHeaderGridRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanHeaderGridRow.swift; sourceTree = "<group>"; };
 		27581BDF2A213F6800DA7B9A /* RunningPlanDailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanDailyView.swift; sourceTree = "<group>"; };
 		2758306029FB059E00487D76 /* WeeklyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyView.swift; sourceTree = "<group>"; };
 		275830702A033D4200487D76 /* DateUtilitiesWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilitiesWeek.swift; sourceTree = "<group>"; };
+		27614DF62A4E3046001D3628 /* RunningPlanHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanHeader.swift; sourceTree = "<group>"; };
 		276C645E29B251ED001C79F3 /* RunCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		276C646129B251ED001C79F3 /* RunCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCalculatorApp.swift; sourceTree = "<group>"; };
 		276C646529B251EF001C79F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		276C646829B251EF001C79F3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		276C646E29B251EF001C79F3 /* RunCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		276C647229B251EF001C79F3 /* RunCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCalculatorTests.swift; sourceTree = "<group>"; };
-		276C647829B251EF001C79F3 /* RunCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		276C647C29B251EF001C79F3 /* RunCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCalculatorUITests.swift; sourceTree = "<group>"; };
-		276C647E29B251EF001C79F3 /* RunCalculatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCalculatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		276C648B29B25213001C79F3 /* YearlyMileageCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyMileageCalculatorView.swift; sourceTree = "<group>"; };
 		276C648D29B2521B001C79F3 /* YearlyMileageCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyMileageCalculator.swift; sourceTree = "<group>"; };
 		276C649029B25804001C79F3 /* DateUtilitiesYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilitiesYear.swift; sourceTree = "<group>"; };
@@ -95,28 +118,37 @@
 		276C649629B30E0A001C79F3 /* HealthDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataController.swift; sourceTree = "<group>"; };
 		276C649829B31241001C79F3 /* RunCalculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunCalculator.entitlements; sourceTree = "<group>"; };
 		276C649929B42BDB001C79F3 /* MileageChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageChart.swift; sourceTree = "<group>"; };
-		2787D9B02A44732500B0CE57 /* YearlyMileagePieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyMileagePieChart.swift; sourceTree = "<group>"; };
-		2787D9B22A44774000B0CE57 /* YearlyMileageInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyMileageInformationView.swift; sourceTree = "<group>"; };
+		27757E352A75B61C004A2D28 /* RunningPlanSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningPlanSelection.swift; sourceTree = "<group>"; };
+		278437722C13930D00F05F01 /* MileageGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoal.swift; sourceTree = "<group>"; };
+		278747DD2A7EBB04003C6C7D /* DateGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateGenerator.swift; sourceTree = "<group>"; };
+		2787D9B02A44732500B0CE57 /* MileageGoalTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalTabView.swift; sourceTree = "<group>"; };
+		2787D9B22A44774000B0CE57 /* MileageGoalInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalInformationView.swift; sourceTree = "<group>"; };
 		27897ADE2A17E45000E41DAB /* HKWorkoutSimilarity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWorkoutSimilarity.swift; sourceTree = "<group>"; };
 		278D6E6D2A0743D0002695EB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		278D6E6F2A0862C4002695EB /* HKWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWorkoutView.swift; sourceTree = "<group>"; };
 		278D6E712A0874A5002695EB /* HMSFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMSFormatter.swift; sourceTree = "<group>"; };
 		278D6E732A09BA96002695EB /* HKWorkoutList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWorkoutList.swift; sourceTree = "<group>"; };
 		2791BFF72A46208700C7E86B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		2798F0DC2A4DD8D400B11369 /* RunPlanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunPlanController.swift; sourceTree = "<group>"; };
+		2793737E2A7C21CB00352A14 /* DailyGoalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyGoalTests.swift; sourceTree = "<group>"; };
 		2798F0E22A4DDAB300B11369 /* RunningPlanNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanNavigationView.swift; sourceTree = "<group>"; };
 		279B694D2A223BEC00527A5E /* RunningPlanWeekGridRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanWeekGridRow.swift; sourceTree = "<group>"; };
 		279B694F2A225A0700527A5E /* RunningPlanWeeklyGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanWeeklyGoal.swift; sourceTree = "<group>"; };
-		279B69512A22704600527A5E /* RunningPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanViewController.swift; sourceTree = "<group>"; };
+		279B69512A22704600527A5E /* RunningPlanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanController.swift; sourceTree = "<group>"; };
 		279B69532A227BD800527A5E /* RunningPlanKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanKeyboard.swift; sourceTree = "<group>"; };
+		279F85C92C55652900C2DC8F /* MileageGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalViewController.swift; sourceTree = "<group>"; };
+		27AF4DA42C14F234002CA364 /* GoalSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectionView.swift; sourceTree = "<group>"; };
+		27AF4DA62C14F263002CA364 /* MileageGoalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalController.swift; sourceTree = "<group>"; };
+		27AF4DA82C14FB59002CA364 /* GoalEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditView.swift; sourceTree = "<group>"; };
 		27B822462A21510D0098D734 /* RunningPlanEditControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanEditControls.swift; sourceTree = "<group>"; };
 		27BF38892A073A420066A485 /* RunningPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlan.swift; sourceTree = "<group>"; };
 		27C0B2042A0E9A6F008D0A11 /* HKWorkoutSummaryGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWorkoutSummaryGrid.swift; sourceTree = "<group>"; };
 		27C0B2062A0E9A97008D0A11 /* WorkoutPeriodSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPeriodSummary.swift; sourceTree = "<group>"; };
 		27C0B2082A104A52008D0A11 /* DateRangeUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeUtilities.swift; sourceTree = "<group>"; };
 		27C0B20A2A141579008D0A11 /* RunningPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanView.swift; sourceTree = "<group>"; };
+		27CB622E2A7978F10035F67D /* TodaysRunView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodaysRunView.swift; sourceTree = "<group>"; };
 		27D298EC2A317EB500052894 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		27DE26652A2651DB00049D3D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		27E272522C0E771E0037B7E8 /* HKWorkout+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkout+Image.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,13 +166,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		276C647529B251EF001C79F3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -152,12 +177,29 @@
 			path = Dates;
 			sourceTree = "<group>";
 		};
+		2751BDE12C543CDA0083AEA1 /* Goal Tab */ = {
+			isa = PBXGroup;
+			children = (
+				279F85C92C55652900C2DC8F /* MileageGoalViewController.swift */,
+				2751BDDF2C543B290083AEA1 /* NewMileageGoalView.swift */,
+				2787D9B02A44732500B0CE57 /* MileageGoalTabView.swift */,
+				2751BDE22C5442230083AEA1 /* MileagePieChart.swift */,
+				2787D9B22A44774000B0CE57 /* MileageGoalInformationView.swift */,
+				270A00FF2C739E51006F4033 /* InProgressMileageGoalInfoView.swift */,
+				270A01032C73A3CC006F4033 /* PreviousMileageGoalInfoView.swift */,
+				270A01052C73A3E6006F4033 /* UpcomingMileageGoalInfoView.swift */,
+			);
+			path = "Goal Tab";
+			sourceTree = "<group>";
+		};
 		2756DD062A205E380010CDBD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				270B6CC42A55CF2C00B07641 /* RunningPlanDetailViewController.swift */,
 				2798F0E22A4DDAB300B11369 /* RunningPlanNavigationView.swift */,
-				279B69512A22704600527A5E /* RunningPlanViewController.swift */,
+				270B6CC02A521B7200B07641 /* RunningPlanListDetailView.swift */,
 				27C0B20A2A141579008D0A11 /* RunningPlanView.swift */,
+				27614DF62A4E3046001D3628 /* RunningPlanHeader.swift */,
 				2756DD0B2A20EBA60010CDBD /* RunningPlanHeaderGridRow.swift */,
 				279B694D2A223BEC00527A5E /* RunningPlanWeekGridRow.swift */,
 				27581BDF2A213F6800DA7B9A /* RunningPlanDailyView.swift */,
@@ -172,7 +214,6 @@
 			children = (
 				276C646029B251ED001C79F3 /* RunCalculator */,
 				276C647129B251EF001C79F3 /* RunCalculatorTests */,
-				276C647B29B251EF001C79F3 /* RunCalculatorUITests */,
 				276C645F29B251ED001C79F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -182,7 +223,6 @@
 			children = (
 				276C645E29B251ED001C79F3 /* RunCalculator.app */,
 				276C646E29B251EF001C79F3 /* RunCalculatorTests.xctest */,
-				276C647829B251EF001C79F3 /* RunCalculatorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,22 +232,30 @@
 			children = (
 				27DE26652A2651DB00049D3D /* Colors.xcassets */,
 				278D6E6D2A0743D0002695EB /* Persistence.swift */,
+				278747DD2A7EBB04003C6C7D /* DateGenerator.swift */,
+				275596EB2A7FD3B000B26729 /* DateModifier.swift */,
+				270F77AF2C501081003ED596 /* DebugView.swift */,
 				276C649829B31241001C79F3 /* RunCalculator.entitlements */,
 				276C646129B251ED001C79F3 /* RunCalculatorApp.swift */,
 				27D298EC2A317EB500052894 /* Logging.swift */,
 				276C649229B262E5001C79F3 /* CircularSlider.swift */,
 				27897ADE2A17E45000E41DAB /* HKWorkoutSimilarity.swift */,
+				270B6CC22A55A41400B07641 /* TextWithImage.swift */,
 				2791BFF52A461BCC00C7E86B /* Data Controllers */,
 				2791BFF62A461CBF00C7E86B /* Formatting */,
 				272AD6652A1C518100938128 /* Dates */,
 				27897ADD2A17D27100E41DAB /* Workout Summaries */,
 				278D6E752A0A94CB002695EB /* Workout Views */,
 				276C649929B42BDB001C79F3 /* MileageChart.swift */,
+				2751BDE12C543CDA0083AEA1 /* Goal Tab */,
+				278437712C13930300F05F01 /* Mileage Goal */,
 				2758306029FB059E00487D76 /* WeeklyView.swift */,
 				2791BFF72A46208700C7E86B /* CalendarView.swift */,
+				27CB622E2A7978F10035F67D /* TodaysRunView.swift */,
 				27BF388B2A073A660066A485 /* Running Plans */,
-				276C648F29B25223001C79F3 /* Yearly Mileage */,
+				276C648F29B25223001C79F3 /* Yearly Mileage Goal */,
 				276C646529B251EF001C79F3 /* Assets.xcassets */,
+				270A01092C73A8DB006F4033 /* Localizable.xcstrings */,
 				276C646729B251EF001C79F3 /* Preview Content */,
 			);
 			path = RunCalculator;
@@ -226,30 +274,31 @@
 			children = (
 				276C647229B251EF001C79F3 /* RunCalculatorTests.swift */,
 				2756DD092A20618C0010CDBD /* RunningPlanTests.swift */,
+				2793737E2A7C21CB00352A14 /* DailyGoalTests.swift */,
 			);
 			path = RunCalculatorTests;
 			sourceTree = "<group>";
 		};
-		276C647B29B251EF001C79F3 /* RunCalculatorUITests */ = {
-			isa = PBXGroup;
-			children = (
-				276C647C29B251EF001C79F3 /* RunCalculatorUITests.swift */,
-				276C647E29B251EF001C79F3 /* RunCalculatorUITestsLaunchTests.swift */,
-			);
-			path = RunCalculatorUITests;
-			sourceTree = "<group>";
-		};
-		276C648F29B25223001C79F3 /* Yearly Mileage */ = {
+		276C648F29B25223001C79F3 /* Yearly Mileage Goal */ = {
 			isa = PBXGroup;
 			children = (
 				27C0B2082A104A52008D0A11 /* DateRangeUtilities.swift */,
 				276C649029B25804001C79F3 /* DateUtilitiesYear.swift */,
 				275830702A033D4200487D76 /* DateUtilitiesWeek.swift */,
 				276C648B29B25213001C79F3 /* YearlyMileageCalculatorView.swift */,
-				2787D9B22A44774000B0CE57 /* YearlyMileageInformationView.swift */,
-				2787D9B02A44732500B0CE57 /* YearlyMileagePieChart.swift */,
 			);
-			path = "Yearly Mileage";
+			path = "Yearly Mileage Goal";
+			sourceTree = "<group>";
+		};
+		278437712C13930300F05F01 /* Mileage Goal */ = {
+			isa = PBXGroup;
+			children = (
+				278437722C13930D00F05F01 /* MileageGoal.swift */,
+				27AF4DA42C14F234002CA364 /* GoalSelectionView.swift */,
+				27AF4DA82C14FB59002CA364 /* GoalEditView.swift */,
+				2751BDE42C54527B0083AEA1 /* MileageGoalCalculations.swift */,
+			);
+			path = "Mileage Goal";
 			sourceTree = "<group>";
 		};
 		27897ADD2A17D27100E41DAB /* Workout Summaries */ = {
@@ -267,6 +316,7 @@
 			children = (
 				278D6E732A09BA96002695EB /* HKWorkoutList.swift */,
 				278D6E6F2A0862C4002695EB /* HKWorkoutView.swift */,
+				27E272522C0E771E0037B7E8 /* HKWorkout+Image.swift */,
 			);
 			path = "Workout Views";
 			sourceTree = "<group>";
@@ -274,9 +324,10 @@
 		2791BFF52A461BCC00C7E86B /* Data Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2798F0DC2A4DD8D400B11369 /* RunPlanController.swift */,
+				279B69512A22704600527A5E /* RunningPlanController.swift */,
 				276C649629B30E0A001C79F3 /* HealthDataController.swift */,
 				276C648D29B2521B001C79F3 /* YearlyMileageCalculator.swift */,
+				27AF4DA62C14F263002CA364 /* MileageGoalController.swift */,
 			);
 			path = "Data Controllers";
 			sourceTree = "<group>";
@@ -296,6 +347,7 @@
 				27BF38892A073A420066A485 /* RunningPlan.swift */,
 				279B694F2A225A0700527A5E /* RunningPlanWeeklyGoal.swift */,
 				2756DD002A205BE80010CDBD /* RunningPlanDailyGoal.swift */,
+				27757E352A75B61C004A2D28 /* RunningPlanSelection.swift */,
 				2756DD062A205E380010CDBD /* Views */,
 			);
 			path = "Running Plans";
@@ -339,24 +391,6 @@
 			productReference = 276C646E29B251EF001C79F3 /* RunCalculatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		276C647729B251EF001C79F3 /* RunCalculatorUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 276C648829B251EF001C79F3 /* Build configuration list for PBXNativeTarget "RunCalculatorUITests" */;
-			buildPhases = (
-				276C647429B251EF001C79F3 /* Sources */,
-				276C647529B251EF001C79F3 /* Frameworks */,
-				276C647629B251EF001C79F3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				276C647A29B251EF001C79F3 /* PBXTargetDependency */,
-			);
-			name = RunCalculatorUITests;
-			productName = RunCalculatorUITests;
-			productReference = 276C647829B251EF001C79F3 /* RunCalculatorUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -371,10 +405,6 @@
 						CreatedOnToolsVersion = 14.2;
 					};
 					276C646D29B251EF001C79F3 = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 276C645D29B251ED001C79F3;
-					};
-					276C647729B251EF001C79F3 = {
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 276C645D29B251ED001C79F3;
 					};
@@ -395,7 +425,6 @@
 			targets = (
 				276C645D29B251ED001C79F3 /* RunCalculator */,
 				276C646D29B251EF001C79F3 /* RunCalculatorTests */,
-				276C647729B251EF001C79F3 /* RunCalculatorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -407,18 +436,12 @@
 			files = (
 				27DE26662A2651DB00049D3D /* Colors.xcassets in Resources */,
 				276C646929B251EF001C79F3 /* Preview Assets.xcassets in Resources */,
+				270A010A2C73A8DB006F4033 /* Localizable.xcstrings in Resources */,
 				276C646629B251EF001C79F3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		276C646C29B251EF001C79F3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		276C647629B251EF001C79F3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -436,37 +459,57 @@
 				278D6E702A0862C4002695EB /* HKWorkoutView.swift in Sources */,
 				276C649129B25804001C79F3 /* DateUtilitiesYear.swift in Sources */,
 				278D6E742A09BA96002695EB /* HKWorkoutList.swift in Sources */,
+				27CB622F2A7978F10035F67D /* TodaysRunView.swift in Sources */,
 				270160532A0D2EAC00A4BF31 /* Formatters.swift in Sources */,
-				279B69522A22704600527A5E /* RunningPlanViewController.swift in Sources */,
+				279B69522A22704600527A5E /* RunningPlanController.swift in Sources */,
 				27C0B20B2A141579008D0A11 /* RunningPlanView.swift in Sources */,
 				275830712A033D4200487D76 /* DateUtilitiesWeek.swift in Sources */,
 				270160512A0D2D9E00A4BF31 /* HKWorkoutSummaryCard.swift in Sources */,
 				27BF388A2A073A420066A485 /* RunningPlan.swift in Sources */,
+				27AF4DA72C14F263002CA364 /* MileageGoalController.swift in Sources */,
 				27897ADF2A17E45000E41DAB /* HKWorkoutSimilarity.swift in Sources */,
 				27B822472A21510D0098D734 /* RunningPlanEditControls.swift in Sources */,
 				276C649729B30E0A001C79F3 /* HealthDataController.swift in Sources */,
+				278437732C13930D00F05F01 /* MileageGoal.swift in Sources */,
 				278D6E722A0874A5002695EB /* HMSFormatter.swift in Sources */,
+				270F77B02C501081003ED596 /* DebugView.swift in Sources */,
 				279B69502A225A0700527A5E /* RunningPlanWeeklyGoal.swift in Sources */,
 				276C646229B251ED001C79F3 /* RunCalculatorApp.swift in Sources */,
-				2787D9B12A44732500B0CE57 /* YearlyMileagePieChart.swift in Sources */,
+				270B6CC12A521B7200B07641 /* RunningPlanListDetailView.swift in Sources */,
+				2787D9B12A44732500B0CE57 /* MileageGoalTabView.swift in Sources */,
+				27614DF72A4E3046001D3628 /* RunningPlanHeader.swift in Sources */,
 				2756DD012A205BE80010CDBD /* RunningPlanDailyGoal.swift in Sources */,
 				2798F0E32A4DDAB300B11369 /* RunningPlanNavigationView.swift in Sources */,
+				27E272532C0E771E0037B7E8 /* HKWorkout+Image.swift in Sources */,
+				279F85CA2C55652900C2DC8F /* MileageGoalViewController.swift in Sources */,
+				2766FD432C4EE352007AEF0A /* CircularSlider.swift in Sources */,
+				270A01062C73A3E6006F4033 /* UpcomingMileageGoalInfoView.swift in Sources */,
+				27757E362A75B61C004A2D28 /* RunningPlanSelection.swift in Sources */,
 				276C648C29B25213001C79F3 /* YearlyMileageCalculatorView.swift in Sources */,
-				2798F0DD2A4DD8D400B11369 /* RunPlanController.swift in Sources */,
 				27C0B2092A104A52008D0A11 /* DateRangeUtilities.swift in Sources */,
+				275596EC2A7FD3B000B26729 /* DateModifier.swift in Sources */,
 				2791BFF82A46208700C7E86B /* CalendarView.swift in Sources */,
 				278D6E6E2A0743D0002695EB /* Persistence.swift in Sources */,
 				27581BE02A213F6800DA7B9A /* RunningPlanDailyView.swift in Sources */,
-				276C649329B262E5001C79F3 /* CircularSlider.swift in Sources */,
 				279B694E2A223BEC00527A5E /* RunningPlanWeekGridRow.swift in Sources */,
+				2751BDE32C5442230083AEA1 /* MileagePieChart.swift in Sources */,
 				272AD6672A1C527400938128 /* DateInterval-Day.swift in Sources */,
+				270B6CC52A55CF2C00B07641 /* RunningPlanDetailViewController.swift in Sources */,
+				270B6CC32A55A41400B07641 /* TextWithImage.swift in Sources */,
+				27AF4DA52C14F234002CA364 /* GoalSelectionView.swift in Sources */,
+				270A01042C73A3CC006F4033 /* PreviousMileageGoalInfoView.swift in Sources */,
+				27AF4DA92C14FB59002CA364 /* GoalEditView.swift in Sources */,
+				2751BDE52C54527B0083AEA1 /* MileageGoalCalculations.swift in Sources */,
 				276C649A29B42BDB001C79F3 /* MileageChart.swift in Sources */,
 				276C648E29B2521B001C79F3 /* YearlyMileageCalculator.swift in Sources */,
-				2787D9B32A44774000B0CE57 /* YearlyMileageInformationView.swift in Sources */,
+				2787D9B32A44774000B0CE57 /* MileageGoalInformationView.swift in Sources */,
 				27D298ED2A317EB500052894 /* Logging.swift in Sources */,
+				278747DE2A7EBB05003C6C7D /* DateGenerator.swift in Sources */,
+				2751BDE02C543B290083AEA1 /* NewMileageGoalView.swift in Sources */,
 				2756DD0C2A20EBA60010CDBD /* RunningPlanHeaderGridRow.swift in Sources */,
 				27C0B2072A0E9A97008D0A11 /* WorkoutPeriodSummary.swift in Sources */,
 				2758306129FB059E00487D76 /* WeeklyView.swift in Sources */,
+				270A01002C739E51006F4033 /* InProgressMileageGoalInfoView.swift in Sources */,
 				27C0B2052A0E9A6F008D0A11 /* HKWorkoutSummaryGrid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,17 +518,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2793737F2A7C21CB00352A14 /* DailyGoalTests.swift in Sources */,
 				2756DD0A2A20618C0010CDBD /* RunningPlanTests.swift in Sources */,
 				276C647329B251EF001C79F3 /* RunCalculatorTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		276C647429B251EF001C79F3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				276C647F29B251EF001C79F3 /* RunCalculatorUITestsLaunchTests.swift in Sources */,
-				276C647D29B251EF001C79F3 /* RunCalculatorUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,11 +531,6 @@
 			isa = PBXTargetDependency;
 			target = 276C645D29B251ED001C79F3 /* RunCalculator */;
 			targetProxy = 276C646F29B251EF001C79F3 /* PBXContainerItemProxy */;
-		};
-		276C647A29B251EF001C79F3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 276C645D29B251ED001C79F3 /* RunCalculator */;
-			targetProxy = 276C647929B251EF001C79F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -563,6 +593,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -618,6 +649,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -629,13 +661,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RunCalculator/RunCalculator.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunCalculator/Preview Content\"";
 				DEVELOPMENT_TEAM = DF288G8ZJ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow Health access to automatically calculate miles run";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Health access is required to allow mileage calculations";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Health access is required to allow mileage calculations";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -646,12 +681,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmuszynski.RunCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -661,13 +701,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RunCalculator/RunCalculator.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunCalculator/Preview Content\"";
 				DEVELOPMENT_TEAM = DF288G8ZJ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow Health access to automatically calculate miles run";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Health access is required to allow mileage calculations";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Health access is required to allow mileage calculations";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -678,12 +721,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmuszynski.RunCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -696,10 +744,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DF288G8ZJ6;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmuszynski.RunCalculatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -716,50 +767,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DF288G8ZJ6;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmuszynski.RunCalculatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunCalculator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RunCalculator";
-			};
-			name = Release;
-		};
-		276C648929B251EF001C79F3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DF288G8ZJ6;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mmuszynski.RunCalculatorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = RunCalculator;
-			};
-			name = Debug;
-		};
-		276C648A29B251EF001C79F3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DF288G8ZJ6;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mmuszynski.RunCalculatorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = RunCalculator;
 			};
 			name = Release;
 		};
@@ -789,15 +807,6 @@
 			buildConfigurations = (
 				276C648629B251EF001C79F3 /* Debug */,
 				276C648729B251EF001C79F3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		276C648829B251EF001C79F3 /* Build configuration list for PBXNativeTarget "RunCalculatorUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				276C648929B251EF001C79F3 /* Debug */,
-				276C648A29B251EF001C79F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

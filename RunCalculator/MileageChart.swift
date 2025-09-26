@@ -20,10 +20,18 @@ var color = Color(white: 0.8)
 
 struct MileageChart: View {
     @EnvironmentObject var hdc: HealthDataController
+    @State private var zoomLevel: Double = 1.0
+
+    private var initialX: Double {
+        max(0,Double(Date.current.dayOfYear!)-(25 / zoomLevel))
+    }
+    private var initialY: Double { max(100,hdc.calculator.mileageAsOfToday - (40 / zoomLevel))
+    }
     
     var body: some View {
         VStack {
-            Chart(hdc.cachedChartData) {                RuleMark(x: .value("Today", Date().dayOfYear!))
+            Chart(hdc.cachedChartData) {
+                RuleMark(x: .value("Today", Date.current.dayOfYear!))
                     .foregroundStyle(.tertiary)
                     .annotation(alignment: .center) {
                         Text("Today")
@@ -43,12 +51,12 @@ struct MileageChart: View {
         .task {
             await hdc.calculateChartData()
         }
-        .chartScrollTargetBehavior(.valueAligned(unit: 25))
+        .chartScrollTargetBehavior(.valueAligned(unit: 10))
         .chartScrollableAxes([.horizontal, .vertical])
-        .chartXVisibleDomain(length: 100)
-        .chartYVisibleDomain(length: 100)
-        .chartScrollPosition(initialX: max(0,Date().dayOfYear!-75))
-        .chartScrollPosition(initialY: max(100,hdc.calculator.mileageAsOfToday + 50))
+        .chartXVisibleDomain(length: 100 / zoomLevel)
+        .chartYVisibleDomain(length: 100 / zoomLevel)
+        .chartScrollPosition(initialX: initialX)
+        .chartScrollPosition(initialY: initialY)
         .padding()
         
         

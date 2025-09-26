@@ -35,32 +35,7 @@ struct HKWorkoutView: View {
     
     var body: some View {
         HStack {
-            
-            switch workout.workoutActivityType {
-            case .running:
-                Image(systemName: "figure.run.circle.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 45)
-                    .foregroundColor(.green)
-            case .walking:
-                Image(systemName: "figure.walk.circle.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 45)
-                    .foregroundColor(.blue)
-            case .cycling:
-                Image(systemName: "bicycle.circle.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 45)
-                    .foregroundColor(.red)
-            default:
-                VStack {
-                    Image(systemName: "questionmark.circle.fill")
-                    Text("\(workout.workoutActivityType.rawValue)")
-                }
-            }
+            workout.image
             
             Spacer()
             
@@ -100,8 +75,8 @@ extension HKWorkout {
         //                  end: Date().addingTimeInterval(300),
         //        duration: 0)
         let wk = HKWorkout(activityType: .running,
-                           start: Date(),
-                           end: Date().addingTimeInterval(3584),
+                           start: .current,
+                           end: .current.addingTimeInterval(3584),
                            duration: 0,
                            totalEnergyBurned: nil,
                            totalDistance: HKQuantity(unit: .mile(), doubleValue: 4),

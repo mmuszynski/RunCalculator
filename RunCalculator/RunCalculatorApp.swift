@@ -16,7 +16,7 @@ extension Color {
 @main
 struct RunCalculatorApp: App {
     let healthDataController = HealthDataController()
-    let planController = RunningPlanViewController()
+    let planController = RunningPlanController()
     
     var body: some Scene {
         WindowGroup {
@@ -50,30 +50,33 @@ extension View {
 
 struct MainView: View {
     @EnvironmentObject var healthDataController: HealthDataController
-    @EnvironmentObject var planController: RunningPlanViewController
-    
-    
+    @EnvironmentObject var planController: RunningPlanController
+    @State var mileageGoalController: MileageGoalController = MileageGoalController()
     
     var body: some View {
         TabView {
-            YearlyMileagePieChart()
+            YearlyMileageTabView()
                 .tabLabel("Progress",
                           image: "figure.run")
             MileageChart()
                 .tabLabel("Chart",
                           image: "chart.line.uptrend.xyaxis")
-            CalendarView()
+            WorkoutList()
                 .tabLabel("Workouts",
                           image: "calendar")
             RunningPlanNavigationView()
                 .tabLabel("Plan",
                           image: "calendar.badge.plus")
+            DebugView()
+                .tabLabel("Debug",
+                          image: "gear")
         }
+        .environment(mileageGoalController)
     }
 }
 
 #Preview {
     MainView()
         .environmentObject(HealthDataController())
-        .environmentObject(RunningPlanViewController())
+        .environmentObject(RunningPlanController())
 }

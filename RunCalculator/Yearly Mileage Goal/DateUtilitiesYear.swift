@@ -68,10 +68,10 @@ extension Date {
 //Static vars and functions
 extension Date {
     static var currentYearStart: Date? {
-        Date().startOfYear
+        .current.startOfYear
     }
     
     static var currentYearEnd: Date? {
-        Date().endOfYear
+        .current.endOfYear
     }
 }

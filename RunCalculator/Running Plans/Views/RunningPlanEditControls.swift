@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RunningPlanEditControls: View {
-    @EnvironmentObject var controller: RunningPlanViewController
+    @EnvironmentObject var controller: RunningPlanController
     
     var dayDescription: String {
         guard let day = controller.selection?.day,
@@ -52,6 +52,6 @@ struct RunningPlanEditControls: View {
 struct RunningPlanDailyEditView_Previews: PreviewProvider {
     static var previews: some View {
         RunningPlanEditControls()
-            .environmentObject(RunningPlanViewController())
+            .environmentObject(RunningPlanController())
     }
 }

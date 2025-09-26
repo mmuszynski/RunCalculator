@@ -36,7 +36,7 @@ struct KeyboardButtonStyle: ButtonStyle {
 }
 
 struct RunningPlanKeyboard: View {
-    @EnvironmentObject var controller: RunningPlanViewController
+    @EnvironmentObject var controller: RunningPlanController
     var keys = "123456789.0⌫".map { $0 }
     
     var body: some View {
@@ -57,7 +57,7 @@ struct RunningPlanKeyboard: View {
 }
 
 struct KeyboardKey: View {
-    @EnvironmentObject var controller: RunningPlanViewController
+    @EnvironmentObject var controller: RunningPlanController
     var character: Character
     
     var body: some View {
@@ -73,7 +73,7 @@ struct RunningPlanKeyboard_Previews: PreviewProvider {
             RunningPlanKeyboard()
             RunningPlanKeyboard()
         }
-        .environmentObject(RunningPlanViewController())
+        .environmentObject(RunningPlanController())
         .previewLayout(.fixed(width: 400, height: 300))
     }
 }

@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct RunningPlanNavigationView: View {
-    @EnvironmentObject var viewController: RunningPlanViewController
+    @EnvironmentObject var viewController: RunningPlanController
     
     var body: some View {
         NavigationStack {
             List(viewController.runningPlans) { plan in
-                NavigationLink(plan.name, value: plan)
+                RunningPlanListDetailView(plan: plan)
             }
             .navigationDestination(for: RunningPlan.self) { plan in
-                RunningPlanView(plan: .constant(plan))
+                RunningPlanView(viewController: RunningPlanDetailViewController(plan: plan))
             }
             .overlay {
                 Text("No plans.")
@@ -42,5 +42,5 @@ struct RunningPlanNavigationView: View {
 
 #Preview {
     RunningPlanNavigationView()
-        .environmentObject(RunningPlanViewController())
+        .environmentObject(RunningPlanController())
 }

@@ -5,11 +5,11 @@
 import Foundation
 
 extension URL {
-    fileprivate func appending(_ path: String) -> URL {
+    fileprivate func appending(_ path: String, isDirectory: Bool = false) -> URL {
         if #available(macOS 13.0, iOS 16.0, *) {
-            return self.appending(path: path)
+            return self.appending(path: path, directoryHint: isDirectory ? .isDirectory : .notDirectory)
         } else {
-            return self.appendingPathComponent(path)
+            return self.appendingPathComponent(path, isDirectory: isDirectory)
         }
     }
 }
@@ -41,6 +41,10 @@ public struct Persistence {
         }
     }
     
+    enum ReadError: Error {
+        case fileNotFound
+    }
+    
     public static func write(_ object: any Encodable, to location: Persistence.Location, withFilename filename: String = "", using method: EncodingMethod = .json) throws {
         let objectData = try method.data(from: object)
         let url = location.url.appending(filename)
@@ -48,14 +52,15 @@ public struct Persistence {
     }
     
     public static func read<T: Decodable>(_ type: T.Type, from location: Persistence.Location, withFilename filename: String = "", using method: EncodingMethod = .json) throws -> T {
-        let objectData = try Data(contentsOf: location.url.appending(filename))
+        let url = location.url.appending(filename, isDirectory: false)
+        let objectData = try Data(contentsOf: url)
         let object = try method.decode(T.self, from: objectData)
         return object
     }
     
     public struct Location {
         public enum LocationError: Error {
-            case noLocationNoCreate
+            case locationNeedsToBeCreated
             case unknownBundleIdentifier
         }
         
@@ -81,16 +86,16 @@ public struct Persistence {
             return try Self.userApplicationSupport(appending: name, createIfNeeded: createIfNeeded)
         }
         
-        public func appending(pathComponent path: String, createIfNecessary: Bool = true) throws -> Self {
-            let url = self.url.appendingPathComponent(path)
+        public func appending(path: String, createIfNecessary: Bool = true) throws -> Self {
+            let url = self.url.appending(path)
             try Self.checkDirectory(at: url, createIfNeeded: createIfNecessary)
             return Self(url: url)
         }
         
-        private static func checkDirectory(at url: URL, createIfNeeded: Bool = true) throws {
+        static func checkDirectory(at url: URL, createIfNeeded: Bool = true) throws {
             if !FileManager.default.fileExists(atPath: url.absoluteString) {
                 if createIfNeeded == false {
-                    throw LocationError.noLocationNoCreate
+                    throw LocationError.locationNeedsToBeCreated
                 }
                 
                 try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)

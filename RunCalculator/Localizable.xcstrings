@@ -1,0 +1,250 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    " (%lld workouts)" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : " (%lld workout)"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : " (%lld workouts)"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    " ahead of pace" : {
+
+    },
+    " behind pace" : {
+
+    },
+    " over " : {
+
+    },
+    " per run)" : {
+
+    },
+    " remaining" : {
+
+    },
+    " to reach goal" : {
+
+    },
+    "/wk" : {
+
+    },
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld activities" : {
+
+    },
+    "%lld runs (" : {
+
+    },
+    "%lld runs: (%0.1f mi)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "%#@arg1@ runs: (%2$0.1f mi)"
+          }
+        }
+      }
+    },
+    "%lld weeks" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld week"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lld weeks"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%llu" : {
+
+    },
+    "Active" : {
+
+    },
+    "Active Plan" : {
+
+    },
+    "Add Goal" : {
+
+    },
+    "Adjusted Date" : {
+
+    },
+    "Completed" : {
+
+    },
+    "Confirm" : {
+
+    },
+    "Date" : {
+
+    },
+    "Difference" : {
+
+    },
+    "Distance" : {
+
+    },
+    "Done" : {
+
+    },
+    "Duration:" : {
+
+    },
+    "Empty." : {
+
+    },
+    "End" : {
+
+    },
+    "End Date" : {
+
+    },
+    "Goal Complete! 🎉" : {
+
+    },
+    "Goal: " : {
+
+    },
+    "Group" : {
+
+    },
+    "km" : {
+
+    },
+    "Last cached at " : {
+
+    },
+    "Mi" : {
+
+    },
+    "Mileage:" : {
+
+    },
+    "Never cached" : {
+
+    },
+    "No plans." : {
+
+    },
+    "No Workouts" : {
+
+    },
+    "Quick select" : {
+
+    },
+    "Remove All Goals" : {
+
+    },
+    "Reset Caches" : {
+
+    },
+    "Rest Day" : {
+
+    },
+    "Run data" : {
+
+    },
+    "Running Plans" : {
+
+    },
+    "Select" : {
+
+    },
+    "Select either the start date or the end date:" : {
+
+    },
+    "Short by " : {
+
+    },
+    "Start" : {
+
+    },
+    "Start Date" : {
+
+    },
+    "Success! 🎉" : {
+
+    },
+    "System Date" : {
+
+    },
+    "This Month" : {
+
+    },
+    "This plan consists of %lld runs over %lld weeks with an average of %@ miles per activity." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "This plan consists of %#@arg1@ runs over %#@arg2@ weeks with an average of %3$@ miles per activity."
+          }
+        }
+      }
+    },
+    "This plan is currently active" : {
+
+    },
+    "This Year" : {
+
+    },
+    "Today" : {
+
+    },
+    "Today's Goal" : {
+
+    },
+    "Tomorrow's Goal" : {
+
+    },
+    "Tot" : {
+
+    },
+    "Weeks" : {
+
+    },
+    "wk %lld" : {
+
+    },
+    "Workouts" : {
+
+    },
+    "Zero" : {
+
+    }
+  },
+  "version" : "1.0"
+}

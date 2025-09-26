@@ -37,7 +37,7 @@ struct RunningPlanWeekGridRow_Previews: PreviewProvider {
                 plan.addWeek()
                 return plan.goals.first!
             }())
-            .environmentObject(RunningPlanViewController())
+            .environmentObject(RunningPlanController())
         }
     }
 }

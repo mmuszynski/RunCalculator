@@ -9,19 +9,28 @@ import Foundation
 import SwiftUI
 import HealthKit
 
-class YearlyMileageCalculator: ObservableObject {
+extension String {
+    static let mileageGoalAppStorageKey = "com.mmuszynski.runCalculator.mileageGoal"
+    static let todaysMileageAppStorageKey = "com.mmuszynski.runCalculator.mileageAsOfToday"
+}
+
+class MileageCalculator: ObservableObject {
     
-    @AppStorage("com.mmuszynski.runCalculator.mileageAsOfToday") var mileageAsOfToday: Double = 0 {
+    @AppStorage(.todaysMileageAppStorageKey) var mileageAsOfToday: Double = 0 {
         willSet {
             objectWillChange.send()
         }
     }
-    @Published var mileageGoal: Double = 500
+    @AppStorage(.mileageGoalAppStorageKey) var mileageGoal: Double = 500 {
+        willSet {
+            objectWillChange.send()
+        }
+    }
     private var workouts: [HKWorkout] = []
     
     func setWorkouts(_ workouts: [HKWorkout]) {
         self.workouts = workouts.filter({ wk in
-            wk.startDate.startOfYear == Date().startOfYear
+            wk.startDate.startOfYear == Date.current.startOfYear
         })
         self.mileageAsOfToday = self.workouts.runkeeperMileage
     }
@@ -67,17 +76,39 @@ class YearlyMileageCalculator: ObservableObject {
     
     /// The ordinal day of the year for the current date
     var currentDayOfYear: Int {
-        return Date().dayOfYear!
+        return Date.current.dayOfYear!
     }
     
     /// The number of days in the current year
     var daysInCurrentYear: Int {
-        return Date().daysInYear!
+        return Date.current.daysInYear!
     }
     
     /// The number of days remaining in the current year, including the current day
     var daysRemainingInCurrentYear: Int {
         daysInCurrentYear - currentDayOfYear + 1
+    }
+    
+    var currentYearInterval: DateInterval? {
+        Calendar.current.dateInterval(of: .year, for: .now)
+    }
+    
+    var secondsInYear: TimeInterval {
+        guard let duration = currentYearInterval?.duration else {
+            print("Warning: Falling back on default")
+            return 60 * 60 * 24 * 365
+        }
+        return duration
+    }
+    
+    var secondsElapsedCurrently: TimeInterval? {
+        guard let interval = currentYearInterval else { return nil }
+        return DateInterval(start: .now, end: interval.end).duration
+    }
+    
+    var fractionOfYearElapsed: Double? {
+        guard let interval = secondsElapsedCurrently else { return nil }
+        return interval / secondsInYear
     }
     
     var mileageRateAsOfToday: Double {
@@ -89,7 +120,7 @@ class YearlyMileageCalculator: ObservableObject {
     }
     
     var monthsRemainingInCurrentYear: Int {
-        13 - Date().monthOfYear!
+        13 - Date.current.monthOfYear!
     }
     
     var mileageRatePerWeekToCompleteGoal: Double {
@@ -135,12 +166,15 @@ class YearlyMileageCalculator: ObservableObject {
 }
 
 extension Array where Element == HKWorkout {
-    var runkeeperMileage: Double {
-        let workouts = self.filter {
+    var runkeeperWorkouts: [HKWorkout] {
+        self.filter {
             $0.workoutActivityType == .running &&
             $0.sourceRevision.source.name == "Runkeeper"
         }
-        
+    }
+    
+    var runkeeperMileage: Double {
+        let workouts = self.runkeeperWorkouts
         let miles = workouts.cumulativeDistance.doubleValue(for: .mile())
         return miles
     }

@@ -13,7 +13,7 @@ fileprivate let logger = Logger(category: "HealthKitController")
 
 class HealthDataController: ObservableObject {
     var store: HKHealthStore?
-    @Published var calculator = YearlyMileageCalculator()
+    @Published var calculator = MileageCalculator()
     
     init() {
         if HKHealthStore.isHealthDataAvailable() {
@@ -24,16 +24,10 @@ class HealthDataController: ObservableObject {
     @Published var workouts: [HKWorkout] = []
     @Published var quantity: HKQuantity?
     
-    private var lastCacheTime: Date?
+    @Published var isDoingWork: Bool = false
+    @Published var lastCachedAt: Date?
     
     private func getWorkouts(startDate: Date, endDate: Date, _ completion: (([HKWorkout]?)->())?) {
-        if let lastCacheTime, abs(lastCacheTime.timeIntervalSinceNow) < 3600 {
-            //if it's been less than an hour, don't do anything
-            logger.info("Returning cached values")
-            completion?(workouts)
-            return
-        }
-        
         Task {
             if let status = try await store?.statusForAuthorizationRequest(toShare: [], read: [.workoutType()]) {
                 switch status {
@@ -57,9 +51,7 @@ class HealthDataController: ObservableObject {
             let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: Int(HKObjectQueryNoLimit), sortDescriptors: nil) { query, samples, error in
                 
                 logger.info("Returning HKSampleQuery with \(samples?.count ?? 0) samples")
-                
                 completion?(samples as? [HKWorkout])
-                self.lastCacheTime = Date()
             }
             
             logger.info("Executing HKSampleQuery")
@@ -77,29 +69,84 @@ class HealthDataController: ObservableObject {
         return workouts?.sorted(by: { $0.startDate > $1.startDate }) ?? []
     }
     
-    @MainActor func loadWorkouts(startDate: Date = .distantPast, endDate: Date = .distantFuture) async {
-        logger.debug("Loading workouts")
+    private func appendWorkouts(_ workouts: [HKWorkout]) {
+        let uniqueWorkouts = workouts.filter { !self.workouts.contains($0) }
+        self.workouts.append(contentsOf: uniqueWorkouts)
+        logger.debug("Added \(uniqueWorkouts.count) new workouts")
+    }
+    
+    @MainActor func loadWorkouts(startDate: Date = .distantPast, endDate: Date = .distantFuture, usingCache: Bool = true) async {
+        isDoingWork = true
+        var startDate = startDate
         
-        if workouts.isEmpty {
-            logger.debug("No cached workouts found, getting health data")
-            let workouts = await getWorkouts(startDate: startDate, endDate: endDate)
-            self.workouts = workouts
-        } else {
-            logger.debug("Cached workouts found, not updating")
+        if startDate == .distantPast {
+            startDate = workouts.max(by: { workout1, workout2 in
+                workout1.endDate < workout2.endDate
+            })?.endDate ?? .distantPast
         }
+        
+        startDate = startDate.advanced(by: 0.0001)
+        
+        logger.debug("Loading workouts from \(startDate)")
+        
+        if usingCache == false {
+            workouts.removeAll()
+            startDate = .distantPast
+        }
+        
+        let newWorkouts = await getWorkouts(startDate: startDate, endDate: endDate)
+        self.appendWorkouts(newWorkouts)
         
         self.computeSummaries()
         self.calculator.setWorkouts(workouts)
+        isDoingWork = false
+        
+        self.lastCachedAt = Date()
     }
     
+    func workouts(for interval: DateInterval) -> [HKWorkout] {
+        self.workouts.filter { workout in
+            interval.contains(workout.startDate)
+        }
+    }
+    
+    func mileage(for interval: DateInterval) -> Double {
+        workouts(for: interval).mileage
+    }
+    
+    func runkeeperMileage(for interval: DateInterval) -> Double {
+        workouts(for: interval).runkeeperMileage
+    }
+    
+    var cachedSummaries: [DateInterval : WorkoutPeriodSummaryCache] = [:]
+    
     func summary(for interval: DateInterval, activity: HKWorkoutActivityType = .running) -> WorkoutPeriodSummary {
-        logger.info("Calculating workout period summary for \(interval)")
+        //check for cached workouts before doing the calculation
+        if let cached = cachedSummaries[interval],
+           cached.expiry > .current {
+            logger.trace("Returning cached workout period summary for \(interval)")
+            return cached.summary
+        }
+        
+        //also check to see if workouts are empty
+        if workouts.isEmpty {
+            var summary = WorkoutPeriodSummary()
+            summary.interval = interval
+            return summary
+        }
+        
+        logger.trace("Calculating workout period summary for \(interval)")
         
         var summary = WorkoutPeriodSummary()
         summary.interval = interval
         summary.workouts = self.workouts.filter({ workout in
             interval.contains(workout.startDate)
         })
+        
+        //don't cache anything if the workouts are empty.
+        if !workouts.isEmpty {
+            cachedSummaries[interval] = WorkoutPeriodSummaryCache(summary: summary)
+        }
         return summary
     }
     
@@ -226,6 +273,21 @@ class HealthDataController: ObservableObject {
             }
                 
             distances.append(ChartPoint(day: date.dayOfYear!, mileage: cumulativeDistance, group: "\(date.year)"))
+        }
+    
+        //This doesn't take into account if you have a run scheduled but haven't done it yet
+        
+        if let plan = try? RunningPlanSelection.loadSelectedPlan() {
+            let today = DateInterval.today.start
+            let upcoming = plan.upcomingGoals(after: today)
+            distances.append(ChartPoint(day: today.dayOfYear!, mileage: cumulativeDistance, group: "Proposed"))
+
+            for goal in upcoming {
+                let goalDate = plan.dateInterval(for: goal)!.start.dayOfYear!
+                distances.append(ChartPoint(day: goalDate, mileage: cumulativeDistance, group: "Proposed"))
+                cumulativeDistance += goal.miles
+                distances.append(ChartPoint(day: goalDate, mileage: cumulativeDistance, group: "Proposed"))
+            }
         }
         
         self.cachedChartData = distances

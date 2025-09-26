@@ -33,7 +33,7 @@ struct WeeklyView: View {
     }
     
     var weeks: [DateIntervalDisplayObject] {
-        let current = Date().startOfYear!
+        let current = Date.current.startOfYear!
         return current.weekIntervals.map { interval in
             return DateIntervalDisplayObject(interval)
         }

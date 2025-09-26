@@ -13,7 +13,7 @@ struct WorkoutPeriodSummary {
         case year, month, week, day
     }
     
-    var interval: DateInterval = Calendar.current.dateInterval(of: .year, for: Date())!
+    var interval: DateInterval = Calendar.current.dateInterval(of: .year, for: .current)!
     var workouts: [HKWorkout] = [] {
         didSet {
             self.runningDistance = Measurement(value: workouts.runkeeperMileage, unit: .miles)
@@ -60,4 +60,9 @@ extension WorkoutPeriodSummary {
     static var example: Self {
         return WorkoutPeriodSummary()
     }
+}
+
+struct WorkoutPeriodSummaryCache {
+    var expiry: Date = Date.current.addingTimeInterval(300)
+    var summary: WorkoutPeriodSummary
 }
