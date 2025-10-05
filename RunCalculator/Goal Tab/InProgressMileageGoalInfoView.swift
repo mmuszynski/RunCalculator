@@ -12,20 +12,14 @@ struct InProgressMileageGoalInfoView: View {
     
     var body: some View {
         VStack {
-            Text(vc.goalMileageRemaining, formatter: vc.mileageFormatter) +
-            Text(" remaining")
-            Text(" over ") +
-            Text("\(vc.timeRemaining) weeks")
+            Text("\(vc.goalMileageRemaining, formatter: vc.mileageFormatter)  remaining")
+            Text(" over \(vc.timeRemaining) weeks")
             
             Spacer()
                 .frame(height: 10)
-            Text(vc.remainingMileageRate(per: .weekOfYear), formatter: vc.mileageFormatter) +
-            Text("/wk") +
-            Text(" to reach goal")
-                .fontWeight(.semibold)
+            Text("\(vc.remainingMileageRate(per: .weekOfYear), formatter: vc.mileageFormatter)/wk **to reach goal**")
             
-            Text(vc.mileageAgainstPace.value > 0 ? vc.mileageAgainstPace : -1 * vc.mileageAgainstPace , formatter: vc.mileageFormatter) +
-            Text(vc.mileageAgainstPace.value < 0 ? " ahead of pace" : " behind pace")
+            Text("\(vc.mileageAgainstPace.value > 0 ? vc.mileageAgainstPace : -1 * vc.mileageAgainstPace , formatter: vc.mileageFormatter) \(vc.mileageAgainstPace.value < 0 ? " ahead of pace" : " behind pace")")
         }
         .fontDesign(.rounded)
         .monospacedDigit()

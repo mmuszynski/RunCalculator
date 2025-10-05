@@ -26,15 +26,18 @@ struct YearlyMileageListView: View {
         @Bindable var goalController = goalController
         ZStack {
             GeometryReader { g in
-//                TodaysRunView(goal: planController.todaysGoal, isShowing: !hideGoal)
-//                    .contentShape(Rectangle())
-//                .offset(x: hideGoal ? g.size.width * 0.85 : 0)
-//                .onTapGesture {
-//                    withAnimation {
-//                        hideGoal.toggle()
-//                    }
-//                }
-//                .padding()
+                VStack {
+                    Spacer()
+                    TodaysRunView(goal: planController.todaysGoal, isShowing: !hideGoal)
+                        .contentShape(Rectangle())
+                        .offset(x: hideGoal ? g.size.width * 0.85 : 0)
+                        .onTapGesture {
+                            withAnimation {
+                                hideGoal.toggle()
+                            }
+                        }
+                        .padding()
+                }
             }
             .zIndex(1)
         
@@ -57,7 +60,7 @@ struct YearlyMileageListView: View {
                 }
                 .navigationTitle("Running Goals")
                 .navigationDestination(for: MileageGoal.self) { goal in
-                    MileageGoalView(goal: goal)
+                    MileagePieChartView(goal: goal)
                 }
                 .navigationDestination(for: String.self) { _ in
                     NewMileageGoalView()
@@ -106,8 +109,7 @@ struct YearlyMileageListElement: View {
                 Text(goal.interval, formatter: DateIntervalFormatter(timeStyle: .none, dateStyle: .medium))
                     .font(.headline)
                 Group {
-                    Text("\(vc.mileageTowardsGoal.value, format: .number.precision(.fractionLength(1)))") + Text(" / ") +
-                    Text(goal.measurement, formatter: .mileageFormatter)
+                    Text("\(vc.mileageTowardsGoal.value, format: .number.precision(.fractionLength(1))) / \(goal.measurement, formatter: .mileageFormatter)")
                 }
                 .font(.title3)
             }

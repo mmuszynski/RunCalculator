@@ -32,8 +32,7 @@ struct YearlyMileageTabView: View {
                     VStack(alignment: .leading) {
                         Spacer()
                         Group {
-                            Text("Goal: ") +
-                            Text(goal.measurement, formatter: .mileageFormatter)
+                            Text("Goal: \(goal.measurement, formatter: .mileageFormatter)")
                         }
                         .font(.largeTitle)
                         .fontWeight(.semibold)

@@ -14,16 +14,17 @@ struct PreviousMileageGoalInfoView: View {
         VStack {
             if vc.goalMileageRemaining.value > .zero {
                 Text("Completed")
-                Text("Short by ") +
-                Text(vc.goalMileageRemaining, formatter: vc.mileageFormatter)
+                Text("Short by \(vc.goalMileageRemaining, formatter: vc.mileageFormatter)")
             } else {
                 Text("Success! 🎉")
             }
             
             let count = vc.workoutsDuringInterval.count
-            Text("\(count) runs (") +
-            Text(vc.mileageTowardsGoal / Double(count), formatter: vc.mileageFormatter)
-            Text(" per run)")
+            if count > 0 {
+                Text("\(count) runs (\(vc.mileageTowardsGoal / Double(count), formatter: vc.mileageFormatter) per run)")
+            } else {
+                Text("No runs completed")
+            }
         }
         .fontDesign(.rounded)
         .monospacedDigit()

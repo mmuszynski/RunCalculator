@@ -64,3 +64,18 @@ struct MileagePieChart: View {
     MileagePieChart()
         .environment(MileageGoalViewController(hdc: HealthDataController(), goal: .expired))
 }
+
+#Preview {
+    NavigationStack {
+        VStack {
+            MileagePieChart()
+                .aspectRatio(contentMode: .fit)
+                .border(.black)
+                .padding()
+            Spacer()
+        }
+        .environment(MileageGoalViewController(hdc: HealthDataController(), goal: .example))
+        .navigationTitle(Text("Goal: \(MileageGoal.example.measurement, formatter: .mileageFormatter)"))
+        .navigationSubtitle(Text(MileageGoal.example.interval, formatter: DateIntervalFormatter(timeStyle: .none, dateStyle: .short)))
+    }
+}

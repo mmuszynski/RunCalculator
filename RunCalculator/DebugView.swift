@@ -20,13 +20,11 @@ struct DebugView: View {
                     }
                 }
             } header: {
-                Text("Run data") +
-                Text(" (\(controller.workouts.count) workouts)")
+                Text("Run data (\(controller.workouts.count) workouts)")
                     .foregroundStyle(.secondary)
             } footer: {
                 if let cacheDate = controller.lastCachedAt {
-                    Text("Last cached at ") +
-                    Text(cacheDate, format: .dateTime)
+                    Text("Last cached at \(cacheDate, format: .dateTime)")
                 } else {
                     Text("Never cached")
                 }

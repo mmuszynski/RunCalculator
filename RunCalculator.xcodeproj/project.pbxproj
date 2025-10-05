@@ -73,6 +73,7 @@
 		27DE26662A2651DB00049D3D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DE26652A2651DB00049D3D /* Colors.xcassets */; };
 		27E272532C0E771E0037B7E8 /* HKWorkout+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E272522C0E771E0037B7E8 /* HKWorkout+Image.swift */; };
 		27E33E9E2E8719A200EE2B3C /* YearlyMileageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E33E9D2E8719A200EE2B3C /* YearlyMileageListView.swift */; };
+		27E47FBF2E92D15700F87609 /* MileagePieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E47FBE2E92D15700F87609 /* MileagePieChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,7 @@
 		27DE26652A2651DB00049D3D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		27E272522C0E771E0037B7E8 /* HKWorkout+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkout+Image.swift"; sourceTree = "<group>"; };
 		27E33E9D2E8719A200EE2B3C /* YearlyMileageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyMileageListView.swift; sourceTree = "<group>"; };
+		27E47FBE2E92D15700F87609 /* MileagePieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileagePieChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				2787D9B02A44732500B0CE57 /* YearlyMileageTabView.swift */,
 				27A0DF382E89963700989BC2 /* MileageGoalView.swift */,
 				27E33E9D2E8719A200EE2B3C /* YearlyMileageListView.swift */,
+				27E47FBE2E92D15700F87609 /* MileagePieChartView.swift */,
 				2751BDE22C5442230083AEA1 /* MileagePieChart.swift */,
 				2787D9B22A44774000B0CE57 /* MileageGoalInformationView.swift */,
 				270A00FF2C739E51006F4033 /* InProgressMileageGoalInfoView.swift */,
@@ -489,6 +492,7 @@
 				270B6CC12A521B7200B07641 /* RunningPlanListDetailView.swift in Sources */,
 				2787D9B12A44732500B0CE57 /* YearlyMileageTabView.swift in Sources */,
 				27614DF72A4E3046001D3628 /* RunningPlanHeader.swift in Sources */,
+				27E47FBF2E92D15700F87609 /* MileagePieChartView.swift in Sources */,
 				2756DD012A205BE80010CDBD /* RunningPlanDailyGoal.swift in Sources */,
 				2798F0E32A4DDAB300B11369 /* RunningPlanNavigationView.swift in Sources */,
 				27E272532C0E771E0037B7E8 /* HKWorkout+Image.swift in Sources */,
@@ -688,7 +692,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -728,7 +732,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
