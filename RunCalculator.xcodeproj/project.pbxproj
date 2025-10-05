@@ -18,6 +18,7 @@
 		270B6CC52A55CF2C00B07641 /* RunningPlanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270B6CC42A55CF2C00B07641 /* RunningPlanDetailViewController.swift */; };
 		270F77B02C501081003ED596 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270F77AF2C501081003ED596 /* DebugView.swift */; };
 		272AD6672A1C527400938128 /* DateInterval-Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272AD6662A1C527400938128 /* DateInterval-Day.swift */; };
+		274608412E8AD79A00948756 /* NavigationPathObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274608402E8AD79A00948756 /* NavigationPathObject.swift */; };
 		2751BDE02C543B290083AEA1 /* NewMileageGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BDDF2C543B290083AEA1 /* NewMileageGoalView.swift */; };
 		2751BDE32C5442230083AEA1 /* MileagePieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BDE22C5442230083AEA1 /* MileagePieChart.swift */; };
 		2751BDE52C54527B0083AEA1 /* MileageGoalCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751BDE42C54527B0083AEA1 /* MileageGoalCalculations.swift */; };
@@ -42,7 +43,7 @@
 		27757E362A75B61C004A2D28 /* RunningPlanSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27757E352A75B61C004A2D28 /* RunningPlanSelection.swift */; };
 		278437732C13930D00F05F01 /* MileageGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278437722C13930D00F05F01 /* MileageGoal.swift */; };
 		278747DE2A7EBB05003C6C7D /* DateGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278747DD2A7EBB04003C6C7D /* DateGenerator.swift */; };
-		2787D9B12A44732500B0CE57 /* MileageGoalTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787D9B02A44732500B0CE57 /* MileageGoalTabView.swift */; };
+		2787D9B12A44732500B0CE57 /* YearlyMileageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787D9B02A44732500B0CE57 /* YearlyMileageTabView.swift */; };
 		2787D9B32A44774000B0CE57 /* MileageGoalInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787D9B22A44774000B0CE57 /* MileageGoalInformationView.swift */; };
 		27897ADF2A17E45000E41DAB /* HKWorkoutSimilarity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27897ADE2A17E45000E41DAB /* HKWorkoutSimilarity.swift */; };
 		278D6E6E2A0743D0002695EB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D6E6D2A0743D0002695EB /* Persistence.swift */; };
@@ -57,6 +58,7 @@
 		279B69522A22704600527A5E /* RunningPlanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B69512A22704600527A5E /* RunningPlanController.swift */; };
 		279B69542A227BD800527A5E /* RunningPlanKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B69532A227BD800527A5E /* RunningPlanKeyboard.swift */; };
 		279F85CA2C55652900C2DC8F /* MileageGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F85C92C55652900C2DC8F /* MileageGoalViewController.swift */; };
+		27A0DF392E89963700989BC2 /* MileageGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0DF382E89963700989BC2 /* MileageGoalView.swift */; };
 		27AF4DA52C14F234002CA364 /* GoalSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF4DA42C14F234002CA364 /* GoalSelectionView.swift */; };
 		27AF4DA72C14F263002CA364 /* MileageGoalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF4DA62C14F263002CA364 /* MileageGoalController.swift */; };
 		27AF4DA92C14FB59002CA364 /* GoalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AF4DA82C14FB59002CA364 /* GoalEditView.swift */; };
@@ -70,6 +72,7 @@
 		27D298ED2A317EB500052894 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D298EC2A317EB500052894 /* Logging.swift */; };
 		27DE26662A2651DB00049D3D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DE26652A2651DB00049D3D /* Colors.xcassets */; };
 		27E272532C0E771E0037B7E8 /* HKWorkout+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E272522C0E771E0037B7E8 /* HKWorkout+Image.swift */; };
+		27E33E9E2E8719A200EE2B3C /* YearlyMileageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E33E9D2E8719A200EE2B3C /* YearlyMileageListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +97,7 @@
 		270B6CC42A55CF2C00B07641 /* RunningPlanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanDetailViewController.swift; sourceTree = "<group>"; };
 		270F77AF2C501081003ED596 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		272AD6662A1C527400938128 /* DateInterval-Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateInterval-Day.swift"; sourceTree = "<group>"; };
+		274608402E8AD79A00948756 /* NavigationPathObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPathObject.swift; sourceTree = "<group>"; };
 		2751BDDF2C543B290083AEA1 /* NewMileageGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMileageGoalView.swift; sourceTree = "<group>"; };
 		2751BDE22C5442230083AEA1 /* MileagePieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileagePieChart.swift; sourceTree = "<group>"; };
 		2751BDE42C54527B0083AEA1 /* MileageGoalCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalCalculations.swift; sourceTree = "<group>"; };
@@ -121,7 +125,7 @@
 		27757E352A75B61C004A2D28 /* RunningPlanSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningPlanSelection.swift; sourceTree = "<group>"; };
 		278437722C13930D00F05F01 /* MileageGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoal.swift; sourceTree = "<group>"; };
 		278747DD2A7EBB04003C6C7D /* DateGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateGenerator.swift; sourceTree = "<group>"; };
-		2787D9B02A44732500B0CE57 /* MileageGoalTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalTabView.swift; sourceTree = "<group>"; };
+		2787D9B02A44732500B0CE57 /* YearlyMileageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyMileageTabView.swift; sourceTree = "<group>"; };
 		2787D9B22A44774000B0CE57 /* MileageGoalInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalInformationView.swift; sourceTree = "<group>"; };
 		27897ADE2A17E45000E41DAB /* HKWorkoutSimilarity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKWorkoutSimilarity.swift; sourceTree = "<group>"; };
 		278D6E6D2A0743D0002695EB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		279B69512A22704600527A5E /* RunningPlanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanController.swift; sourceTree = "<group>"; };
 		279B69532A227BD800527A5E /* RunningPlanKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningPlanKeyboard.swift; sourceTree = "<group>"; };
 		279F85C92C55652900C2DC8F /* MileageGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalViewController.swift; sourceTree = "<group>"; };
+		27A0DF382E89963700989BC2 /* MileageGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalView.swift; sourceTree = "<group>"; };
 		27AF4DA42C14F234002CA364 /* GoalSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectionView.swift; sourceTree = "<group>"; };
 		27AF4DA62C14F263002CA364 /* MileageGoalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageGoalController.swift; sourceTree = "<group>"; };
 		27AF4DA82C14FB59002CA364 /* GoalEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditView.swift; sourceTree = "<group>"; };
@@ -149,6 +154,7 @@
 		27D298EC2A317EB500052894 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		27DE26652A2651DB00049D3D /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		27E272522C0E771E0037B7E8 /* HKWorkout+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkout+Image.swift"; sourceTree = "<group>"; };
+		27E33E9D2E8719A200EE2B3C /* YearlyMileageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyMileageListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +188,9 @@
 			children = (
 				279F85C92C55652900C2DC8F /* MileageGoalViewController.swift */,
 				2751BDDF2C543B290083AEA1 /* NewMileageGoalView.swift */,
-				2787D9B02A44732500B0CE57 /* MileageGoalTabView.swift */,
+				2787D9B02A44732500B0CE57 /* YearlyMileageTabView.swift */,
+				27A0DF382E89963700989BC2 /* MileageGoalView.swift */,
+				27E33E9D2E8719A200EE2B3C /* YearlyMileageListView.swift */,
 				2751BDE22C5442230083AEA1 /* MileagePieChart.swift */,
 				2787D9B22A44774000B0CE57 /* MileageGoalInformationView.swift */,
 				270A00FF2C739E51006F4033 /* InProgressMileageGoalInfoView.swift */,
@@ -230,6 +238,7 @@
 		276C646029B251ED001C79F3 /* RunCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				274608402E8AD79A00948756 /* NavigationPathObject.swift */,
 				27DE26652A2651DB00049D3D /* Colors.xcassets */,
 				278D6E6D2A0743D0002695EB /* Persistence.swift */,
 				278747DD2A7EBB04003C6C7D /* DateGenerator.swift */,
@@ -460,6 +469,7 @@
 				276C649129B25804001C79F3 /* DateUtilitiesYear.swift in Sources */,
 				278D6E742A09BA96002695EB /* HKWorkoutList.swift in Sources */,
 				27CB622F2A7978F10035F67D /* TodaysRunView.swift in Sources */,
+				27A0DF392E89963700989BC2 /* MileageGoalView.swift in Sources */,
 				270160532A0D2EAC00A4BF31 /* Formatters.swift in Sources */,
 				279B69522A22704600527A5E /* RunningPlanController.swift in Sources */,
 				27C0B20B2A141579008D0A11 /* RunningPlanView.swift in Sources */,
@@ -468,6 +478,7 @@
 				27BF388A2A073A420066A485 /* RunningPlan.swift in Sources */,
 				27AF4DA72C14F263002CA364 /* MileageGoalController.swift in Sources */,
 				27897ADF2A17E45000E41DAB /* HKWorkoutSimilarity.swift in Sources */,
+				27E33E9E2E8719A200EE2B3C /* YearlyMileageListView.swift in Sources */,
 				27B822472A21510D0098D734 /* RunningPlanEditControls.swift in Sources */,
 				276C649729B30E0A001C79F3 /* HealthDataController.swift in Sources */,
 				278437732C13930D00F05F01 /* MileageGoal.swift in Sources */,
@@ -476,7 +487,7 @@
 				279B69502A225A0700527A5E /* RunningPlanWeeklyGoal.swift in Sources */,
 				276C646229B251ED001C79F3 /* RunCalculatorApp.swift in Sources */,
 				270B6CC12A521B7200B07641 /* RunningPlanListDetailView.swift in Sources */,
-				2787D9B12A44732500B0CE57 /* MileageGoalTabView.swift in Sources */,
+				2787D9B12A44732500B0CE57 /* YearlyMileageTabView.swift in Sources */,
 				27614DF72A4E3046001D3628 /* RunningPlanHeader.swift in Sources */,
 				2756DD012A205BE80010CDBD /* RunningPlanDailyGoal.swift in Sources */,
 				2798F0E32A4DDAB300B11369 /* RunningPlanNavigationView.swift in Sources */,
@@ -489,6 +500,7 @@
 				27C0B2092A104A52008D0A11 /* DateRangeUtilities.swift in Sources */,
 				275596EC2A7FD3B000B26729 /* DateModifier.swift in Sources */,
 				2791BFF82A46208700C7E86B /* CalendarView.swift in Sources */,
+				274608412E8AD79A00948756 /* NavigationPathObject.swift in Sources */,
 				278D6E6E2A0743D0002695EB /* Persistence.swift in Sources */,
 				27581BE02A213F6800DA7B9A /* RunningPlanDailyView.swift in Sources */,
 				279B694E2A223BEC00527A5E /* RunningPlanWeekGridRow.swift in Sources */,

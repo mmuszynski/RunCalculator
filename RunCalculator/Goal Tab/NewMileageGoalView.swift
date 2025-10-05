@@ -10,6 +10,7 @@ import SwiftUI
 struct NewMileageGoalView: View {
     @State private var newGoal = MileageGoal()
     @Environment(MileageGoalController.self) var goalController
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -50,7 +51,7 @@ struct NewMileageGoalView: View {
             Spacer()
             Button {
                 goalController.append(newGoal)
-                newGoal = MileageGoal()
+                dismiss()
             } label: {
                 Text("Add Goal")
                     .font(.headline)
@@ -58,7 +59,15 @@ struct NewMileageGoalView: View {
                     .padding(8)
             }
             .buttonStyle(.borderedProminent)
-            .padding()
+            Button {
+                dismiss()
+            } label: {
+                Text("Cancel")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding(8)
+            }
+            .buttonStyle(.bordered)
         }
         .padding()
     }

@@ -8,8 +8,8 @@
 import SwiftUI
 import HealthKit
 
-extension HKWorkout: Identifiable {}
-extension DateInterval: Identifiable {
+extension HKWorkout: @retroactive Identifiable {}
+extension DateInterval: @retroactive Identifiable {
     public var id: Date {
         self.start
     }

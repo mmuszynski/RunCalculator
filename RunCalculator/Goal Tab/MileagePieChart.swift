@@ -24,7 +24,13 @@ fileprivate struct PieGraphElement {
 }
 
 struct MileagePieChart: View {
+    enum Style {
+        case full
+        case minimal
+    }
+    
     @Environment(MileageGoalViewController.self) var vc
+    var style: Style = .full
     
     var body: some View {
         Chart {
@@ -42,7 +48,9 @@ struct MileagePieChart: View {
         }
         .foregroundStyle(.red)
         .chartBackground { chart in
-            MileageInformationView()
+            if style == .full {
+                MileageInformationView()
+            }
         }
     }
 }

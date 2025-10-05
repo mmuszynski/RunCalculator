@@ -55,7 +55,7 @@ struct MainView: View {
     
     var body: some View {
         TabView {
-            YearlyMileageTabView()
+            YearlyMileageListView()
                 .tabLabel("Progress",
                           image: "figure.run")
             MileageChart()

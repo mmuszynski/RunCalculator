@@ -22,6 +22,7 @@ extension DateInterval {
 struct TodaysRunView: View {
     @EnvironmentObject var healthController: HealthDataController
     var goal: RunningPlanDailyGoal?
+    var isShowing: Bool = true
     
     var isGoalToday: Bool {
         return DateInterval.today == .todayPlusTwoHours
@@ -62,6 +63,8 @@ struct TodaysRunView: View {
     
     var body: some View {
         HStack {
+            Image(systemName: "chevron.left")
+                .rotationEffect(.degrees(isShowing ? 180 : 0))
             VStack(alignment: .leading) {
                 Text(isGoalToday ? "Today's Goal" : "Tomorrow's Goal")
                     .font(.title)

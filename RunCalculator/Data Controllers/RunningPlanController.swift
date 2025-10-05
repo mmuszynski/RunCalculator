@@ -187,3 +187,11 @@ class RunningPlanController: ObservableObject {
         self.todaysGoal = self.selectedPlan?.goal(for: testDate)
     }
 }
+
+extension RunningPlanController {
+    static var example: RunningPlanController = {
+        let controller = RunningPlanController()
+        controller.selectedPlan = RunningPlanSelection(startDate: Date(), plan: .monumental)
+        return controller
+    }()
+}
