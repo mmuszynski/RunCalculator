@@ -25,6 +25,7 @@ extension String {
 
 class RunningPlanController: ObservableObject {
     @Published var runningPlans: [RunningPlan] = [
+        .monumental2025,
         .monumental,
         .monumentalPacer
     ]
